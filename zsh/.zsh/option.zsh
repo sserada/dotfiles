@@ -1,15 +1,4 @@
-# zinit
-[[ ! -f ~/.zsh/zinit/zinit.zsh ]] || source ~/.zsh/zinit/zinit.zsh
-
-# powerlevel10k
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f ~/.zsh/zinit/p10k.zsh ]] || source ~/.zsh/zinit/p10k.zsh
-
-# alias
-[[ ! -f ~/.zsh/alias/alias.zsh ]] || source ~/.zsh/alias/alias.zsh
-[[ ! -f ~/.zsh/alias/chrome.zsh ]] || source ~/.zsh/alias/chrome.zsh
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # save location
 HISTFILE=~/.zsh_history
@@ -81,9 +70,6 @@ setopt complete_in_word
 
 # no beep
 setopt no_beep
-
-# ls colors
-export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # search history
 autoload -Uz history-search-end
