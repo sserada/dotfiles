@@ -52,6 +52,10 @@ alias dcss='docker-compose stop'
 alias vi='nvim'
 alias vim='nvim'
 
+# cpp
+alias gpp='g++ -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -O2 -o'
+alias gppm="g++ -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -O2 -o main main.cpp"
+
 # python
 alias py='python'
 alias py3='python3'
@@ -67,7 +71,7 @@ alias nrd='npm run dev'
 # atcoder
 alias an='acc new'
 alias as='acc s'
-alias ojt='oj t -c "./main" -d ./tests/'
+alias ojt='oj t -c "./" -d ./tests/'
 
 # sudo
 alias _='sudo'
