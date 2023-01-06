@@ -1,5 +1,5 @@
 # zinit
-[[ ! -f ~/.zsh/.zinit.zsh ]] || source ~/.zsh/.zinit.zsh
+[[ ! -f ~/.zsh/.zinit/.zinit.zsh ]] || source ~/.zsh/.zinit/.zinit.zsh
 
 # powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -53,9 +53,6 @@ zstyle ':completion:*' menu select
 #  case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-#  list colors
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 #  list group names
 zstyle ':completion:*' format '%B%F{blue}%d%f%b'
 zstyle ':completion:*' groupname ''
@@ -83,6 +80,9 @@ setopt complete_in_word
 
 # no beep
 setopt no_beep
+
+# ls colors
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # search history
 autoload -Uz history-search-end
