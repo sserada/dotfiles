@@ -7,9 +7,6 @@ alias ll='ls -Gl'
 alias c='cd'
 alias ws='cd ~/workspace'
 
-# cp
-alias cpr = 'cp -r'
-
 # zsh
 alias zrc='source ~/.zshrc'
 
@@ -30,9 +27,6 @@ alias gcod='git checkout dev'
 alias gs='git status'
 alias gl='git log'
 alias gll='git log --oneline'
-alias gr = 'git reset'
-alias grh = 'git reset --hard HEAD^'
-alias grs = 'git reset --soft HEAD^'
 
 # docker
 alias d='docker'
@@ -61,7 +55,6 @@ alias vim='nvim'
 # python
 alias py='python'
 alias py3='python3'
-alias pi = 'pip3 install'
 
 # npm
 alias n='npm'
