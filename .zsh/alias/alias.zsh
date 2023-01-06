@@ -8,7 +8,7 @@ alias c='cd'
 alias ws='cd ~/workspace'
 
 # zsh
-alias zrc='source ~/.zshrc'
+alias zrc='source .zshrc'
 
 # git
 alias g='git'

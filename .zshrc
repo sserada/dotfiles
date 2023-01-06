@@ -1,14 +1,15 @@
 # zinit
-[[ ! -f ~/.zsh/.zinit/.zinit.zsh ]] || source ~/.zsh/.zinit/.zinit.zsh
+[[ ! -f ~/.zsh/zinit/zinit.zsh ]] || source ~/.zsh/zinit/zinit.zsh
 
 # powerlevel10k
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-[[ ! -f ~/.zsh/.zinit/.p10k.zsh ]] || source ~/.zsh/.zinit/.p10k.zsh
+[[ ! -f ~/.zsh/zinit/p10k.zsh ]] || source ~/.zsh/zinit/p10k.zsh
 
 # alias
-[[ ! -f ~/.zsh/.alias/.aliases.zsh ]] || source ~/.zsh/.alias/.aliases.zsh
+[[ ! -f ~/.zsh/alias/alias.zsh ]] || source ~/.zsh/alias/alias.zsh
+[[ ! -f ~/.zsh/alias/chrome.zsh ]] || source ~/.zsh/alias/chrome.zsh
 
 # save location
 HISTFILE=~/.zsh_history
