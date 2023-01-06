@@ -64,5 +64,10 @@ alias nr='npm run'
 alias nrb='npm run build'
 alias nrd='npm run dev'
 
+# atcoder
+alias an='acc new'
+alias as='acc s'
+alias ojt='oj t -c "./main" -d ./tests/'
+
 # sudo
 alias _='sudo'
