@@ -8,13 +8,15 @@ alias c='cd'
 alias ws='cd ~/workspace'
 
 # zsh
-alias zrc='source .zshrc'
+alias zrc='source ~/.zshrc'
 
 # git
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
 alias gau='git add --update'
+alias gm='git commit'
+alias gcm='git commit -m'
 alias gp='git push'
 alias gpl='git pull'
 alias gplu='git pull --rebase'
