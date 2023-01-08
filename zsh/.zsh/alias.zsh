@@ -7,6 +7,17 @@ alias ll='ls -Gl'
 alias c='cd'
 alias ws='cd ~/workspace'
 
+# app
+alias note='open -a "Notion"'
+alias ch='open -a "Google Chrome"'
+alias vc='open -a "Visual Studio Code"'
+alias pp='open -a "Microsoft PowerPoint"'
+alias ex='open -a "Microsoft Excel"'
+alias wd='open -a "Microsoft Word"'
+alias ol='open -a "Microsoft Outlook"'
+alias pv='open -a "Prime Video"'
+alias dc='open -a "Docker"'
+
 # zsh
 alias zrc='source ~/.zshrc'
 
