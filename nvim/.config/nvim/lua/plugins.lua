@@ -41,14 +41,7 @@ packer.init({
 -- install plugins
 return packer.startup(function(use)
 
-	use({ 'wbthomason/packer.nvim' })			                -- packer manager
-	use({ 'nvim-lua/plenary.nvim' })			                -- required
-	use({ 'nvim-lua/popup.nvim' })				                -- required
-  use({ 'TimUntersberger/neogit' })                     -- git client
-  use({ 'sindrets/diffview.nvim' })                     -- show stylish git diff
-	use({ 'github/copilot.vim' })				                  -- github copilot
-  use({ 'iamcco/markdown-preview.nvim' })               -- markdown preview on browser
-  use({ 'chen244/csv-tools.lua' })                      -- colorize csv
+	use({ 'wbthomason/packer.nvim' }) -- packer manager
 
   -- auto setup
 	if PACKER_BOOTSTRAP then
