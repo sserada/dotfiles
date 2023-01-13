@@ -62,6 +62,7 @@ alias dcs='docker-compose start'
 alias dcss='docker-compose stop'
 
 # nvim
+alias v='nvim .'
 alias vi='nvim'
 alias vim='nvim'
 
