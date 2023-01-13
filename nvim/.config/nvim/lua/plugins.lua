@@ -42,6 +42,7 @@ packer.init({
 return packer.startup(function(use)
 
 	use({ 'wbthomason/packer.nvim' }) -- packer manager
+  use({ 'scrooloose/nerdtree' })    -- display files in tree-like format
 
   -- auto setup
 	if PACKER_BOOTSTRAP then
