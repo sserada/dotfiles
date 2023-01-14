@@ -54,6 +54,12 @@ return packer.startup(function(use)
     tag = 'nightly'
   })
 
+  -- treesitter
+  use({
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  })
+
   -- status line
   use({
     'nvim-lualine/lualine.nvim',
