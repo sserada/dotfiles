@@ -41,8 +41,10 @@ packer.init({
 -- install plugins
 return packer.startup(function(use)
 
-	use({ 'wbthomason/packer.nvim' }) -- packer manager
+  use({ 'wbthomason/packer.nvim' })   -- packer manager
+  use({ 'neoclide/coc.nvim', branch = 'release' })   -- coc.nvim
   use({ 'lambdalisue/fern.vim' })   -- file explorer
+
 
   -- auto setup
 	if PACKER_BOOTSTRAP then
