@@ -43,8 +43,10 @@ return packer.startup(function(use)
 
   use({ 'wbthomason/packer.nvim' })   -- packer manager
   use({ 'neoclide/coc.nvim', branch = 'release' })   -- coc.nvim
-  use({ 'lambdalisue/fern.vim' })   -- file explorer
-
+  use({
+    'nvim-tree/nvim-tree.lua',
+    requires = { 'nvim-tree/nvim-web-devicons' }
+  })
 
   -- auto setup
 	if PACKER_BOOTSTRAP then

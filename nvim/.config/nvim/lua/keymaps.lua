@@ -6,5 +6,6 @@ local term_opt = { silent = true }
 keymap('i', 'jk', '<esc>', term_opt)
 keymap('i', 'kj', '<esc>', term_opt)
 
--- Fern
-keymap("n", "<C-e>", ":Fern . -reveal=% -drawer<CR>", opts)
+-- nvim-tree
+keymap("n", "<C-e>", ":NvimTreeToggle<CR>", opts)
+
