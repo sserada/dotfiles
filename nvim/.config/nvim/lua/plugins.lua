@@ -41,12 +41,20 @@ packer.init({
 -- install plugins
 return packer.startup(function(use)
 
-  use({ 'wbthomason/packer.nvim' })   -- packer manager
-  use({ 'neoclide/coc.nvim', branch = 'release' })   -- coc.nvim
+  -- Packer manages itself
+  use({ 'wbthomason/packer.nvim' })
+
+  -- coc.nvim
+  use({ 'neoclide/coc.nvim', branch = 'release' })
+
+  -- file explorer
   use({
     'nvim-tree/nvim-tree.lua',
-    requires = { 'nvim-tree/nvim-web-devicons' }
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    tag = 'nightly'
   })
+
+  -- status line
   use({
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
