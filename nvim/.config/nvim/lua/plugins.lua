@@ -47,6 +47,10 @@ return packer.startup(function(use)
     'nvim-tree/nvim-tree.lua',
     requires = { 'nvim-tree/nvim-web-devicons' }
   })
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  })
 
   -- auto setup
 	if PACKER_BOOTSTRAP then
