@@ -56,6 +56,12 @@ return packer.startup(function(use)
   -- easily lspconfig
   use({ 'williamboman/mason-lspconfig.nvim' })
 
+  -- completion
+  use({ 'hrsh7th/nvim-cmp' })
+
+  -- lsp completion
+  use({ 'hrsh7th/cmp-nvim-lsp' })
+
   -- ai completion
   use({ 'github/copilot.vim' })
 
