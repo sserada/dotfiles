@@ -9,3 +9,5 @@ keymap('i', 'kj', '<esc>', term_opt)
 -- nvim-tree
 keymap("n", "<C-e>", ":NvimTreeToggle<CR>", opts)
 
+-- telescope
+keymap("n", "ff", ":Telescope find_files<CR>", opts)

@@ -41,7 +41,7 @@ packer.init({
 -- install plugins
 return packer.startup(function(use)
 
-  -- Packer manages itself
+  -- packer manages itself
   use({ 'wbthomason/packer.nvim' })
 
   -- coc.nvim
@@ -64,6 +64,12 @@ return packer.startup(function(use)
   use({
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  })
+
+  -- fuzzy finder
+  use({
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
   })
 
   -- auto setup
