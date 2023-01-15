@@ -44,11 +44,20 @@ return packer.startup(function(use)
   -- packer manages itself
   use({ 'wbthomason/packer.nvim' })
 
-  -- coc.nvim
-  use({ 'neoclide/coc.nvim', branch = 'release' })
-
   -- colorscheme
   use({ 'EdenEast/nightfox.nvim' })
+
+  -- lsp config
+  use({ 'neovim/nvim-lspconfig' })
+
+  -- lsp server manager
+  use({ 'williamboman/mason.nvim' })
+  use({ 'williamboman/mason-lspconfig.nvim' })
+
+  -- lsp completion
+  use({ 'hrsh7th/nvim-cmp' })
+  use({ 'hrsh7th/cmp-nvim-lsp' })
+  use({ 'hrsh7th/vim-vsnip' })
 
   -- file explorer
   use({
