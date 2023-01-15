@@ -47,6 +47,9 @@ return packer.startup(function(use)
   -- coc.nvim
   use({ 'neoclide/coc.nvim', branch = 'release' })
 
+  -- colorscheme
+  use({ 'EdenEast/nightfox.nvim' })
+
   -- file explorer
   use({
     'nvim-tree/nvim-tree.lua',
