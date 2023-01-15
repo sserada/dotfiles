@@ -14,6 +14,7 @@ local options = {
   shiftwidth = 2,                     -- the number of spaces inserted for each indentation
   tabstop = 2,                        -- the number of spaces that a <Tab> counts for
   shiftwidth = 2,                     -- the number of spaces inserted for each indentation
+  laststatus = 3,
   clipboard = 'unnamedplus',          -- allows neovim to access the system clipboard
 
 }
