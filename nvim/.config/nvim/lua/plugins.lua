@@ -50,14 +50,11 @@ return packer.startup(function(use)
   -- lsp config
   use({ 'neovim/nvim-lspconfig' })
 
-  -- lsp server manager
+  -- portable package manager
   use({ 'williamboman/mason.nvim' })
-  use({ 'williamboman/mason-lspconfig.nvim' })
 
-  -- lsp completion
-  use({ 'hrsh7th/nvim-cmp' })
-  use({ 'hrsh7th/cmp-nvim-lsp' })
-  use({ 'hrsh7th/vim-vsnip' })
+  -- easily lspconfig
+  use({ 'williamboman/mason-lspconfig.nvim' })
 
   -- file explorer
   use({
