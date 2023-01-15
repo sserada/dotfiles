@@ -1,4 +1,3 @@
-local augroup = vim.api.nvim_create_augroup -- create an autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- create an autocommand
 
 -- remove whitespace on save
