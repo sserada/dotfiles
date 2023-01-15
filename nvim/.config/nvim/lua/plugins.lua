@@ -56,6 +56,9 @@ return packer.startup(function(use)
   -- easily lspconfig
   use({ 'williamboman/mason-lspconfig.nvim' })
 
+  -- ai completion
+  use({ 'github/copilot.vim' })
+
   -- file explorer
   use({
     'nvim-tree/nvim-tree.lua',
