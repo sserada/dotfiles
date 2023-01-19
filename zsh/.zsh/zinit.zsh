@@ -8,6 +8,14 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
 fi
 
 zinit light mollifier/anyframe # interactive filter
-zinit ice depth=1
+
+zinit ice depth=1 # for faster loading
 zinit light romkatv/powerlevel10k # zsh theme
+
+zinit zinit ice wait'0'; zinit light zsh-users/zsh-completions # zsh completion
+autoload -Uz compinit && compinit # enable completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case insensitive completion
+zstyle ':completion:*:default' menu select=1 # select completion by default
+
+zinit light zsh-users/zsh-autosuggestions # syntax highlight
 
