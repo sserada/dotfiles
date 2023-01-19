@@ -66,6 +66,10 @@ alias v='nvim .'
 alias vi='nvim'
 alias vim='nvim'
 
+# tex
+alias pt='platex'
+alias dv='dvipdfmx'
+
 # cpp
 alias gpp='g++ -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -O2 -o'
 alias gppm="g++ -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -O2 -o main main.cpp"
