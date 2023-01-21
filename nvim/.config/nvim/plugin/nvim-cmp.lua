@@ -3,15 +3,10 @@ local cmp = require('cmp')
 require('cmp').setup({
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#annonymonus'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
-  window = {
-    border = 'solid',
-  },
-  mapping = {
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -20,12 +15,15 @@ require('cmp').setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' }
-  }, {
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
     { name = 'buffer' },
-  })
+  },
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.cmd [[
+  set completeopt=menuone,noinsert,noselect
+  highlight! default link CmpItemKind CmpItemMenuDefault
+]]
+
