@@ -62,6 +62,9 @@ return packer.startup(function(use)
   -- lsp completion
   use({ 'hrsh7th/cmp-nvim-lsp' })
 
+  -- buffer
+  use({ 'hrsh7th/cmp-buffer' })
+
   -- ai completion
   use({ 'github/copilot.vim' })
 
