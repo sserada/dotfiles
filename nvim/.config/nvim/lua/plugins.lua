@@ -65,6 +65,15 @@ return packer.startup(function(use)
   -- buffer
   use({ 'hrsh7th/cmp-buffer' })
 
+  -- snippet
+  use({ 'L3MON4D3/LuaSnip' })
+
+  -- cmp + luasnip
+  use({ 'saadparwaiz1/cmp_luasnip' })
+
+  -- friendly snippets
+  use({ 'rafamadriz/friendly-snippets' })
+
   -- ai completion
   use({ 'github/copilot.vim' })
 

@@ -1,9 +1,10 @@
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 
-require('cmp').setup({
+cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -15,9 +16,17 @@ require('cmp').setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
+    ['<C-k>'] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' })
   }),
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
   },
 })
