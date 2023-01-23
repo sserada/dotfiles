@@ -65,6 +65,8 @@ alias dcss='docker-compose stop'
 alias v='nvim .'
 alias vi='nvim'
 alias vim='nvim'
+alias vo='nvim -O'
+alias vio='nvim -O'
 
 # tex
 alias pt='platex'
