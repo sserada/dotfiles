@@ -67,6 +67,8 @@ alias vi='nvim'
 alias vim='nvim'
 alias vo='nvim -O'
 alias vio='nvim -O'
+alias va='nvim *'
+alias via='nvim *'
 
 # tex
 alias pt='platex'
