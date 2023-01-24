@@ -11,7 +11,14 @@ keymap('i', 'jk', '<esc>', term_opt)
 keymap('i', 'kj', '<esc>', term_opt)
 
 -- nvim-tree
-keymap("n", "<C-e>", ":NvimTreeToggle<CR>", opts)
+keymap('n', '<C-e>', ':NvimTreeToggle<CR>', opts)
 
 -- telescope
-keymap("n", "ff", ":Telescope find_files<CR>", opts)
+keymap('n', 'ff', ':Telescope find_files<CR>', opts)
+
+-- luasnip
+keymap('i', '<C-j>', 'require('luasnip').jump(1)<CR>', opts)
+keymap('s', '<C-j>', 'require('luasnip').jump(1)<CR>', opts)
+keymap('i', '<C-k>', 'require('luasnip').jump(-1)<CR>', opts)
+keymap('s', '<C-k>', 'require('luasnip').jump(-1)<CR>', opts)
+
