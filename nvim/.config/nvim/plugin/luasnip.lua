@@ -17,13 +17,135 @@ ls.add_snippets(nil, {
       insert(0),
     }),
     snip({
-      trig = 'for',
+      trig = 'main',
       }, {
-      text('for (int i = '),
+      text({'int main() {', ''}),
+      insert(0),
+      text({'', '  return 0;', '}'}),
+    }),
+    snip({
+      trig = 'print',
+      }, {
+      text('cout << '),
       insert(1),
-      text('; i < '),
+      text(' << endl;'),
+      insert(0),
+    }),
+    snip({
+      trig = 'input',
+      }, {
+      text('cin >> '),
+      insert(1),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'def',
+      }, {
+      text('void '),
+      insert(1),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defi',
+      }, {
+      text('int '),
+      insert(1),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defd',
+      }, {
+      text('double '),
+      insert(1),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defll',
+      }, {
+      text('long long '),
+      insert(1),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defstr',
+      }, {
+      text('string '),
+      insert(1),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defvec',
+      }, {
+      text('vector<'),
+      insert(1),
+      text('> '),
       insert(2),
-      text('; i++) {'),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defmap',
+      }, {
+      text('map<'),
+      insert(1),
+      text(', '),
+      insert(2),
+      text('> '),
+      insert(3),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defset',
+      }, {
+      text('set<'),
+      insert(1),
+      text('> '),
+      insert(2),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'defpair',
+      }, {
+      text('pair<'),
+      insert(1),
+      text(', '),
+      insert(2),
+      text('> '),
+      insert(3),
+      text('() {'),
+      insert(0),
+      text('}'),
+    }),
+    snip({
+      trig = 'int',
+      }, {
+      text('int '),
+      insert(1),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'double',
+      }, {
+      text('double '),
+      insert(1),
+      text(';'),
       insert(0),
     }),
     snip({
@@ -34,6 +156,99 @@ ls.add_snippets(nil, {
       text(';'),
       insert(0),
     }),
+    snip({
+      trig = 'str',
+      }, {
+      text('string '),
+      insert(1),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'vec',
+      }, {
+      text('vector<'),
+      insert(1),
+      text('> '),
+      insert(2),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'map',
+      }, {
+      text('map<'),
+      insert(1),
+      text(', '),
+      insert(2),
+      text('> '),
+      insert(3),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'set',
+      }, {
+      text('set<'),
+      insert(1),
+      text('> '),
+      insert(2),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'pair',
+      }, {
+      text('pair<'),
+      insert(1),
+      text(', '),
+      insert(2),
+      text('> '),
+      insert(3),
+      text(';'),
+      insert(0),
+    }),
+    snip({
+      trig = 'if',
+      }, {
+      text('if ('),
+      insert(1),
+      text(') {'),
+      insert(0),
+    }),
+    snip({
+      trig = 'else',
+      }, {
+      text('} else {'),
+      insert(0),
+    }),
+    snip({
+      trig = 'elif',
+      }, {
+      text('} else if ('),
+      insert(1),
+      text(') {'),
+      insert(0),
+    }),
+    snip({
+      trig = 'while',
+      }, {
+      text('while ('),
+      insert(1),
+      text(') {'),
+      insert(0),
+    }),
+    snip({
+      trig = 'for',
+      }, {
+      text('for (int i = '),
+      insert(1),
+      text('; i < '),
+      insert(2),
+      text('; i++) {'),
+      insert(0),
+    }),
+
   },
 })
 
