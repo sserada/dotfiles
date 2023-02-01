@@ -11,6 +11,15 @@ local dynamic = ls.dynamic_node
 ls.add_snippets(nil, {
   cpp = {
     snip({
+      trig = 'atc',
+      }, {
+      text({'#include <bits/stdc++.h>', 'using namespace std;', ''}),
+      text({'using ll=long long', ''}),
+      text({'#define rep(i, n) for (int i = 0; i < (int)(n); i++)', ''}),
+      text({'#define Rep(i,a,b) for(int i=(a);i<(b);i++)', ''}),
+      text({'#define all(x) (x).begin(),(x).end()', ''}),
+    }),
+    snip({
       trig = 'std',
       }, {
       text({'#include <bits/stdc++.h>', 'using namespace std;', ''}),
