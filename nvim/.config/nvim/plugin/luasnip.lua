@@ -21,20 +21,20 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'std',
-      }, {
+    }, {
       text({'#include <bits/stdc++.h>', 'using namespace std;', ''}),
       insert(0),
     }),
     snip({
       trig = 'main',
-      }, {
+    }, {
       text({'int main() {', ''}),
       insert(0),
       text({'', '  return 0;', '}'}),
     }),
     snip({
       trig = 'print',
-      }, {
+    }, {
       text('cout << '),
       insert(1),
       text(' << endl;'),
@@ -42,7 +42,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'input',
-      }, {
+    }, {
       text('cin >> '),
       insert(1),
       text(';'),
@@ -50,7 +50,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'def',
-      }, {
+    }, {
       text('void '),
       insert(1),
       text('() {'),
@@ -59,7 +59,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defi',
-      }, {
+    }, {
       text('int '),
       insert(1),
       text('() {'),
@@ -68,7 +68,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defd',
-      }, {
+    }, {
       text('double '),
       insert(1),
       text('() {'),
@@ -77,7 +77,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defll',
-      }, {
+    }, {
       text('long long '),
       insert(1),
       text('() {'),
@@ -86,7 +86,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defstr',
-      }, {
+    }, {
       text('string '),
       insert(1),
       text('() {'),
@@ -95,7 +95,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defvec',
-      }, {
+    }, {
       text('vector<'),
       insert(1),
       text('> '),
@@ -106,7 +106,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defmap',
-      }, {
+    }, {
       text('map<'),
       insert(1),
       text(', '),
@@ -119,7 +119,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defset',
-      }, {
+    }, {
       text('set<'),
       insert(1),
       text('> '),
@@ -130,7 +130,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'defpair',
-      }, {
+    }, {
       text('pair<'),
       insert(1),
       text(', '),
@@ -143,7 +143,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'int',
-      }, {
+    }, {
       text('int '),
       insert(1),
       text(';'),
@@ -151,7 +151,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'double',
-      }, {
+    }, {
       text('double '),
       insert(1),
       text(';'),
@@ -159,7 +159,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'll',
-      }, {
+    }, {
       text('long long '),
       insert(1),
       text(';'),
@@ -167,7 +167,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'str',
-      }, {
+    }, {
       text('string '),
       insert(1),
       text(';'),
@@ -175,7 +175,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'vec',
-      }, {
+    }, {
       text('vector<'),
       insert(1),
       text('> '),
@@ -185,7 +185,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'map',
-      }, {
+    }, {
       text('map<'),
       insert(1),
       text(', '),
@@ -197,7 +197,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'set',
-      }, {
+    }, {
       text('set<'),
       insert(1),
       text('> '),
@@ -207,7 +207,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'pair',
-      }, {
+    }, {
       text('pair<'),
       insert(1),
       text(', '),
@@ -219,7 +219,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'if',
-      }, {
+    }, {
       text('if ('),
       insert(1),
       text(') {'),
@@ -227,13 +227,13 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'else',
-      }, {
+    }, {
       text('} else {'),
       insert(0),
     }),
     snip({
       trig = 'elif',
-      }, {
+    }, {
       text('} else if ('),
       insert(1),
       text(') {'),
@@ -241,7 +241,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'while',
-      }, {
+    }, {
       text('while ('),
       insert(1),
       text(') {'),
@@ -249,7 +249,7 @@ ls.add_snippets(nil, {
     }),
     snip({
       trig = 'for',
-      }, {
+    }, {
       text('for (int i = '),
       insert(1),
       text('; i < '),
@@ -257,7 +257,36 @@ ls.add_snippets(nil, {
       text('; i++) {'),
       insert(0),
     }),
-
+    snip({
+      trig = 'unionfind',
+    }, {
+      text({
+        'struct UnionFind {',
+        '  vector<int> par;',
+        '',
+        '  UnionFind(int n) : par(n) {',
+        '    for (int i = 0; i < n; i++) par[i] = i;',
+        '  }',
+        '',
+        '  int root(int x) {',
+        '    if (par[x] == x) return x;',
+        '    return par[x] = root(par[x]);',
+        '  }',
+        '',
+        '  bool same(int x, int y) {',
+        '    return root(x) == root(y);',
+        '  }',
+        '',
+        '  void unite(int x, int y) {',
+        '    x = root(x);',
+        '    y = root(y);',
+        '    if (x == y) return;',
+        '    par[x] = y;',
+        '  }',
+        '};',
+      }),
+      insert(0),
+    }),
   },
 })
 
