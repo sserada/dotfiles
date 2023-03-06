@@ -18,6 +18,10 @@ ls.add_snippets(nil, {
       text({'#define rep(i, n) for (int i = 0; i < (int)(n); i++)', ''}),
       text({'#define Rep(i,a,b) for(int i=(a);i<(b);i++)', ''}),
       text({'#define all(x) (x).begin(),(x).end()', ''}),
+      text({'template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }', ''}),
+      text({'template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }', ''}),
+      text({'const int INF = 1e9;', ''}),
+      text({'const ll LINF = 1e18;', ''}),
     }),
     snip({
       trig = 'std',
