@@ -1,18 +1,18 @@
-local autocmd = vim.api.nvim_create_autocmd -- create an autocommand
+local autocmd = vim.api.nvim_create_autocmd -- Create an autocommand
 
--- remove whitespace on save
+-- Remove whitespace on save
 autocmd("BufWritePre", {
     pattern = '*',
     command = ":%s/\\s\\+$//e"
 })
 
--- don't auto comment new lines
+-- Don't auto comment new lines
 autocmd('BufEnter', {
     pattern = '*',
     command = "set fo-=c fo-=r fo-=o"
 })
 
--- highlight on yank
+-- Highlight on yank
 autocmd('TextYankPost', {
     pattern = '*',
     command = 'lua vim.highlight.on_yank {on_visual = false}'
