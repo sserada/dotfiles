@@ -1,5 +1,4 @@
-require('options')
-require('autocmds')
-require('plugins')
-require('keymaps')
-require('colorscheme')
+-- author:   fightingso (https://github.com/fightingso)
+-- license:  MIT
+
+require("config")
