@@ -1,5 +1,5 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"  -- lazy.nvimのパスを設定
+if not (vim.uv or vim.loop).fs_stat(lazypath) then            -- lazy.nvimが存在しない場合、gitコマンドでlazy.nvimをクローン
   vim.fn.system({
     "git",
     "clone",
@@ -9,6 +9,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)                                   -- ランタイムパスにlazy.nvimを追加
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins")                                -- pluginsディレクトリ内のプラグイン設定を読み込む
+
