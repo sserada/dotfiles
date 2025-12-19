@@ -1,4 +1,4 @@
--- author:   fightingso (https://github.com/fightingso)
+-- author:   Sera (https://github.com/sserada)
 -- license:  MIT
 
 require("config")
