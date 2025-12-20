@@ -22,27 +22,27 @@ return {
 
     mason_lspconfig.setup({                           -- nvim-lspconfig用のLSPサーバーを自動インストール
       ensure_installed = {
-        "tsserver",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "svelte",
-        "lua_ls",
-        "graphql",
-        "emmet_ls",
-        "prismals",
-        "pyright",
+        "tsserver",                                   -- TypeScript/JavaScript
+        "html",                                       -- HTML
+        "cssls",                                      -- CSS
+        "tailwindcss",                                -- Tailwind CSS
+        "svelte",                                     -- Svelte
+        "lua_ls",                                     -- Lua
+        "graphql",                                    -- GraphQL
+        "emmet_ls",                                   -- Emmet
+        "prismals",                                   -- Prisma
+        "pyright",                                    -- Python
       },
     })
 
-    mason_tool_installer.setup({                       -- 外部ツールを自動インストール
+    mason_tool_installer.setup({                       -- 外部ツール（フォーマッターやリンター）を自動インストール
       ensure_installed = {
-        "prettier",
-        "stylua",
-        "isort",
-        "black",
-        "pylint",
-        "eslint_d",
+        "prettier",                                    -- コードフォーマッター
+        "stylua",                                      -- Luaフォーマッター
+        "isort",                                       -- Pythonのimportソート
+        "black",                                       -- Pythonフォーマッター
+        "pylint",                                      -- Pythonリンター
+        "eslint_d",                                    -- ESLintデーモン
       },
     })
   end,
