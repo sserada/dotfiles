@@ -1,18 +1,18 @@
-local autocmd = vim.api.nvim_create_autocmd -- Create an autocommand
+local autocmd = vim.api.nvim_create_autocmd -- autocmd作成用のAPIを変数に格納
 
--- Remove whitespace on save
+-- ファイル保存時に行末の空白を削除
 autocmd("BufWritePre", {
     pattern = '*',
     command = ":%s/\\s\\+$//e"
 })
 
--- Don't auto comment new lines
+-- 新しい行で自動的にコメントを挿入しないように設定
 autocmd('BufEnter', {
     pattern = '*',
     command = "set fo-=c fo-=r fo-=o"
 })
 
--- Highlight on yank
+-- ヤンク（コピー）したテキストをハイライト
 autocmd('TextYankPost', {
     pattern = '*',
     command = 'lua vim.highlight.on_yank {on_visual = false}'
