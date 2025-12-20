@@ -2,7 +2,8 @@ return {
   "williamboman/mason.nvim",                          -- 外部ツールのインストールと管理用プラグイン
   dependencies = {
     "williamboman/mason-lspconfig.nvim",              -- mason.nvimとnvim-lspconfigの連携用プラグイン
-    "WhoIsSethDaniel/mason-tool-installer.nvim",      -- mason.nvimで外部ツールを自動インストールするためのプラグイン },
+    "WhoIsSethDaniel/mason-tool-installer.nvim",      -- mason.nvimで外部ツールを自動インストールするためのプラグイン
+  },
   config = function()
     -- Masonのセットアップ
     local mason = require("mason")
