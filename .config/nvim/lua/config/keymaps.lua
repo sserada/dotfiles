@@ -7,3 +7,6 @@ local term_opt = { silent = true }
 keymap('i', 'jk', '<esc>', term_opt)
 keymap('i', 'kj', '<esc>', term_opt)
 
+-- Neogitを <leader>gg で開く
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogitを開く" })
+
