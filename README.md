@@ -214,7 +214,19 @@ nvim ~/.zsh/option.zsh
 source ~/.zshrc  # 再読み込み
 ```
 
-**注意 (Linux)**: `.zsh/alias.zsh`にはmacOS専用のアプリ起動エイリアス（`open -a`）が含まれています。Linux環境では該当するエイリアスをコメントアウトまたは削除してください。
+macOS/Linuxなど、特定のOSだけで有効にしたいエイリアスは、`.zsh/alias.zsh`内のOS判定ブロックに記述します。
+
+```bash
+# .zsh/alias.zsh
+
+# ... (共通のエイリアス)
+
+# OS-specific aliases
+if [[ "$(uname)" == "Darwin" ]]; then
+  # macOS-specific aliases
+  # e.g. alias chrome='open -a "Google Chrome"'
+fi
+```
 
 プラグインを追加：
 ```bash
