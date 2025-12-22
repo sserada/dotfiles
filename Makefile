@@ -16,7 +16,7 @@ BACKUP_DIR := $(DOTFILES_DIR)/backup
 HOME_DIR := $(HOME)
 
 # リンク対象のファイル/ディレクトリ
-DOTFILES := .zshrc .zsh .commit_template tmux.conf
+DOTFILES := .zshrc .zsh .commit_template .tmux.conf
 CONFIG_DIRS := nvim
 
 help: ## ヘルプを表示
