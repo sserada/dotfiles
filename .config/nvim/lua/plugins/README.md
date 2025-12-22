@@ -3,7 +3,7 @@
 このディレクトリで管理されているNeovimプラグインの説明。
 
 ## copilot.lua
-[設定ファイル](./copilot.lua)
+[設定ファイル](./completion/copilot.lua)
 
 GitHub Copilotプラグイン。コード補完機能を提供。
 
@@ -14,7 +14,7 @@ GitHub Copilotプラグイン。コード補完機能を提供。
 *   `event = InsertEnter`: 挿入モード移行時に有効化。
 
 ## gitsigns.lua
-[設定ファイル](./gitsigns.lua)
+[設定ファイル](./git/gitsigns.lua)
 
 Gitによる変更行の隣に、追加・変更・削除の記号を表示。
 
@@ -30,7 +30,7 @@ Gitによる変更行の隣に、追加・変更・削除の記号を表示。
 | `<leader>hb` | Normal | 現在行のGit blame情報を表示。 |
 
 ## gruvbox.lua
-[設定ファイル](./gruvbox.lua)
+[設定ファイル](./ui/gruvbox.lua)
 
 `gruvbox-flat` カラースキームの適用。
 
@@ -41,7 +41,7 @@ Gitによる変更行の隣に、追加・変更・削除の記号を表示。
 *   `vim.cmd([[colorscheme gruvbox-flat]])`: Neovimカラースキームを`gruvbox-flat`に設定。
 
 ## mason.lua
-[設定ファイル](./mason.lua)
+[設定ファイル](./lsp/mason.lua)
 
 LSPサーバー、フォーマッター、リンター等、外部ツールの管理。
 設定ファイルに基づき、下記ツールを自動インストール。
@@ -69,7 +69,7 @@ LSPサーバー、フォーマッター、リンター等、外部ツールの�
 *   `eslint_d`
 
 ## neogit.lua
-[設定ファイル](./neogit.lua)
+[設定ファイル](./git/neogit.lua)
 
 EmacsのMagit風UIによるGit操作。
 
@@ -78,7 +78,7 @@ EmacsのMagit風UIによるGit操作。
 *   `:Neogit`: Neogitの起動。
 
 ## nvim-cmp.lua
-[設定ファイル](./nvim-cmp.lua)
+[設定ファイル](./completion/nvim-cmp.lua)
 
 コード補完プラグイン。
 
@@ -100,12 +100,12 @@ EmacsのMagit風UIによるGit操作。
 *   Git
 
 ## presence.lua
-[設定ファイル](./presence.lua)
+[設定ファイル](./ui/presence.lua)
 
 Discord Rich Presence連携。編集中のファイル情報を表示。
 
 ## telescope.lua
-[設定ファイル](./telescope.lua)
+[設定ファイル](./finder/telescope.lua)
 
 ファイル、バッファ等を対象としたファジー検索プラグイン。
 
@@ -127,7 +127,7 @@ Discord Rich Presence連携。編集中のファイル情報を表示。
 | `<C-q>` | 検索結果をQuickfixリストへ送信し、リストを開く。 |
 
 ## comment.lua
-[設定ファイル](./comment.lua)
+[設定ファイル](./editing/comment.lua)
 
 コードのコメントアウト/アンコメントを簡単に行うプラグイン。言語の自動判別による、統一的な操作を提供。
 
@@ -139,6 +139,6 @@ Discord Rich Presence連携。編集中のファイル情報を表示。
 | `gc` | Visual | 選択範囲のコメントアウト/アンコメント。 |
 
 ## autopairs.lua
-[設定ファイル](./autopairs.lua)
+[設定ファイル](./completion/autopairs.lua)
 
 括弧や引用符などを自動で補完するプラグイン。`nvim-cmp`との連携による、入力体験の向上。
