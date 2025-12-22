@@ -45,7 +45,7 @@
 - **注意**: `.gitconfig`はテンプレートから生成されます（追跡されません）
 
 ### tmux
-- **設定ファイル**: [tmux.conf](./tmux.conf)
+- **設定ファイル**: [.tmux.conf](./.tmux.conf)
 - **詳細**: [tmux.md](./tmux.md)
 - **主な設定**:
   - プラグインマネージャー: tpm (tmux plugin manager)
@@ -198,7 +198,7 @@ dotfiles/
 ├── .gitignore             # Git無視ファイル
 ├── Makefile               # インストール/管理スクリプト
 ├── setup.sh               # レガシーセットアップスクリプト
-├── tmux.conf              # tmux設定ファイル
+├── .tmux.conf             # tmux設定ファイル
 ├── tmux.md                # tmux設定の詳細
 └── README.md              # このファイル
 ```
@@ -264,7 +264,7 @@ nvim ~/.commit_template
 `tmux.conf`を直接編集して設定をカスタマイズできます。
 
 ```bash
-nvim ~/dotfiles/tmux.conf
+nvim ~/dotfiles/.tmux.conf
 ```
 
 変更を反映するには、tmuxセッション内で`prefix` + `r` (`r`はリロードコマンド) を実行するか、tmuxセッションを再起動してください。
