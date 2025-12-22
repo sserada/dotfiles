@@ -1,0 +1,5 @@
+# Ignore generated files
+.config/nvim/lazy-lock.json
+
+# Ignore backup directory
+backup/

@@ -1,4 +1,4 @@
-.PHONY: help install uninstall backup restore clean status install-deps
+.PHONY: help install uninstall backup restore clean status install-deps format check-format
 
 # デフォルトターゲット
 .DEFAULT_GOAL := help
@@ -18,6 +18,20 @@ HOME_DIR := $(HOME)
 # リンク対象のファイル/ディレクトリ
 DOTFILES := .zshrc .zsh .commit_template .tmux.conf
 CONFIG_DIRS := nvim
+
+format: ## 全てのファイルをフォーマット
+	@echo "$(BLUE)フォーマット中...$(NC)"
+	@prettier --write . --log-level warn
+	@find . -path './backup' -prune -o \( -name "*.sh" -o -name "*.zsh" \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -w
+	@stylua .
+	@echo "$(GREEN)✓ フォーマット完了！$(NC)"
+
+check-format: ## ファイルのフォーマットをチェック
+	@echo "$(BLUE)フォーマットをチェック中...$(NC)"
+	@prettier --check .
+	@find . -path './backup' -prune -o \( -name "*.sh" -o -name "*.zsh" \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -d
+	@stylua --check .
+	@echo "$(GREEN)✓ フォーマットは正常です！$(NC)"
 
 help: ## ヘルプを表示
 	@echo "$(BLUE)Dotfiles Management$(NC)"
@@ -42,7 +56,7 @@ install-deps: ## 必要な依存パッケージをインストール
 	@echo "$(BLUE)必要なパッケージをインストール中...$(NC)"
 	@if command -v brew &> /dev/null; then \
 		echo "$(YELLOW)Homebrewを使用してインストール...$(NC)"; \
-		brew install neovim git fzf bat eza zoxide ripgrep fd; \
+		brew install neovim git fzf bat eza zoxide ripgrep fd prettier shfmt stylua; \
 	elif command -v apt &> /dev/null; then \
 		echo "$(YELLOW)aptを使用してインストール (Ubuntu/Debian)...$(NC)"; \
 		sudo apt update; \
