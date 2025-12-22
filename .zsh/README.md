@@ -2,6 +2,8 @@
 
 このディレクトリで管理されているZsh設定の説明。
 
+**対応OS**: macOS / Linux
+
 ## 設定ファイル構成
 
 `.zshrc`から以下のファイルを順番に読み込んでいます：
@@ -13,8 +15,6 @@
 5. `chrome.zsh` - Chrome関連の設定
 6. `fzf.zsh` - ファジーファインダーの設定とキーバインド
 7. `path.zsh` - PATHの設定
-
----
 
 ## option.zsh
 [設定ファイル](./option.zsh)
@@ -44,8 +44,6 @@ Zshの基本的な動作を設定。
 |---|---|
 | `Ctrl+P` | 履歴を前方検索（入力済み文字で絞り込み） |
 | `Ctrl+N` | 履歴を後方検索（入力済み文字で絞り込み） |
-
----
 
 ## zinit.zsh
 [設定ファイル](./zinit.zsh)
@@ -91,16 +89,12 @@ Zshの基本的な動作を設定。
 
 高速なファジーファインダー。履歴検索、ファイル検索、ディレクトリ移動など。
 
----
-
 ## p10k.zsh
 [設定ファイル](./p10k.zsh)
 
 Powerlevel10kテーマの詳細設定ファイル。
 
 プロンプトの表示内容やスタイルをカスタマイズ。
-
----
 
 ## alias.zsh
 [設定ファイル](./alias.zsh)
@@ -111,13 +105,17 @@ Powerlevel10kテーマの詳細設定ファイル。
 
 | エイリアス | コマンド | 説明 |
 |---|---|---|
-| `ls` | `ls -G` | 色付きリスト表示 |
-| `la` | `ls -Gla` | 隠しファイルも含めて詳細表示 |
-| `ll` | `ls -Gl` | 詳細表示 |
+| `ls` | `ls -G` | 色付きリスト表示 ※ |
+| `la` | `ls -Gla` | 隠しファイルも含めて詳細表示 ※ |
+| `ll` | `ls -Gl` | 詳細表示 ※ |
 | `c` | `cd` | ディレクトリ移動 |
 | `ws` | `cd ~/workspace` | workspaceへ移動 |
 
+※ `-G`オプションはmacOS専用です。Linux環境では`ls --color=auto`に変更するか、`eza`の使用を推奨します。
+
 ### アプリケーション起動
+
+**注意**: これらのエイリアスはmacOS専用です（`open -a`を使用）。Linux環境では動作しないため、コメントアウトまたは削除してください。
 
 | エイリアス | アプリ |
 |---|---|
@@ -211,8 +209,6 @@ Powerlevel10kテーマの詳細設定ファイル。
 |---|---|---|
 | `_` | `sudo` | 管理者権限 |
 
----
-
 ## fzf.zsh
 [設定ファイル](./fzf.zsh)
 
@@ -238,21 +234,15 @@ Powerlevel10kテーマの詳細設定ファイル。
 *   batによるファイルプレビュー（カラー表示、行番号付き）
 *   インクリメンタル検索
 
----
-
 ## chrome.zsh
 [設定ファイル](./chrome.zsh)
 
 Google Chrome関連の設定。
 
----
-
 ## path.zsh
 [設定ファイル](./path.zsh)
 
 環境変数PATHの設定。
-
----
 
 ## 初回セットアップ
 
@@ -260,13 +250,16 @@ Google Chrome関連の設定。
 
 1. **dotfilesのクローン**
    ```bash
-   git clone <your-repo> ~/dotfiles
+   git clone https://github.com/sserada/dotfiles.git ~/dotfiles
    ```
 
 2. **シンボリックリンクの作成**
    ```bash
-   ln -sf ~/dotfiles/.zshrc ~/.zshrc
-   ln -sf ~/dotfiles/.zsh ~/.zsh
+   cd ~/dotfiles
+   make install-links
+   # または手動で
+   # ln -sf ~/dotfiles/.zshrc ~/.zshrc
+   # ln -sf ~/dotfiles/.zsh ~/.zsh
    ```
 
 3. **Zshを再起動**
@@ -280,7 +273,14 @@ Google Chrome関連の設定。
 
    初回起動時に設定ウィザードが表示されるので、好みのスタイルを選択してください。
 
----
+5. **Linux環境での追加設定**
+
+   macOS専用のエイリアスを調整：
+   ```bash
+   nvim ~/.zsh/alias.zsh
+   # アプリケーション起動エイリアス（open -a）をコメントアウト
+   # lsエイリアスを --color=auto に変更（または eza を使用）
+   ```
 
 ## トラブルシューティング
 
@@ -305,10 +305,15 @@ autoload -Uz compinit && compinit
 zinitが自動的にインストールしますが、手動でインストールする場合：
 
 ```bash
-# Homebrew
+# Homebrew (macOS/Linux)
 brew install fzf
 
-# 手動
+# Linux パッケージマネージャー
+sudo apt install fzf        # Ubuntu/Debian
+sudo pacman -S fzf          # Arch Linux
+sudo dnf install fzf        # Fedora
+
+# 手動インストール（全OS共通）
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
