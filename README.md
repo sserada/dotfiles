@@ -1,6 +1,6 @@
 # dotfiles
 
-個人用dotfiles設定。Zsh、Neovim、Gitの設定を含みます。
+個人用dotfiles設定。Zsh、Neovim、Tmux, Gitの設定を含みます。
 
 **対応OS**: macOS / Linux
 
@@ -43,6 +43,21 @@
   - 見やすいdiff設定
   - Git LFS対応
 - **注意**: `.gitconfig`はテンプレートから生成されます（追跡されません）
+
+### tmux
+- **設定ファイル**: [tmux.conf](./tmux.conf)
+- **詳細**: [tmux.md](./tmux.md)
+- **主な設定**:
+  - プラグインマネージャー: tpm (tmux plugin manager)
+  - Prefixキーを`C-a`に変更
+  - 分割ペインの移動、リサイズ、作成、削除のキーバインド
+  - プラグイン:
+    - tmux-resurrect - tmuxセッションの保存と復元
+    - tmux-sensible - tmuxの基本的な設定
+    - tmux-yank - クリップボード連携
+    - tmux-copycat - 検索機能
+    - tmux-open - URLを開く
+    - tmux-continuum - tmuxセッションの自動保存
 
 ## インストール
 
@@ -139,11 +154,12 @@ nvim
 |---|---|
 | `make help` | 使用可能なコマンドを表示 |
 | `make status` | 現在のシンボリックリンク状態を確認 |
-| `make install` | 全てをインストール（バックアップ→リンク→Git設定） |
+| `make install` | 全てをインストール（バックアップ→リンク→Git設定→tmuxプラグインマネージャー） |
 | `make install-deps` | 必要なパッケージをHomebrew経由でインストール |
 | `make backup` | 既存の設定をバックアップ |
 | `make install-links` | シンボリックリンクのみを作成 |
 | `make install-git` | Git設定のみを適用 |
+| `make install-tmux` | tmuxプラグインマネージャー(tpm)をインストール |
 | `make uninstall` | シンボリックリンクを削除 |
 | `make restore` | バックアップから復元 |
 | `make clean` | バックアップディレクトリを削除 |
@@ -182,6 +198,8 @@ dotfiles/
 ├── .gitignore             # Git無視ファイル
 ├── Makefile               # インストール/管理スクリプト
 ├── setup.sh               # レガシーセットアップスクリプト
+├── tmux.conf              # tmux設定ファイル
+├── tmux.md                # tmux設定の詳細
 └── README.md              # このファイル
 ```
 
@@ -240,6 +258,16 @@ nvim ~/.commit_template
 - `git lga` - 全ブランチのグラフ表示
 
 **注意**: `.gitconfig`はテンプレートから生成されます。個人的な設定（名前、メール等）は`.gitconfig`に保存され、Gitで追跡されません。
+
+### tmux
+
+`tmux.conf`を直接編集して設定をカスタマイズできます。
+
+```bash
+nvim ~/dotfiles/tmux.conf
+```
+
+変更を反映するには、tmuxセッション内で`prefix` + `r` (`r`はリロードコマンド) を実行するか、tmuxセッションを再起動してください。
 
 ## トラブルシューティング
 
@@ -325,6 +353,22 @@ make restore  # バックアップから復元
 | `<leader>xx` | 診断リスト表示 |
 | `gcc` | 行のコメントアウト/アンコメント |
 | `gc` (Visual) | 選択範囲のコメントアウト |
+
+### tmux
+
+| キー | 機能 |
+|---|---|
+| `Ctrl + t` | Prefixキー (デフォルトは `Ctrl + b`) |
+| `prefix` + `d` | セッションから離れる (デタッチ) |
+| `tmux ls` | セッション一覧を表示 |
+| `tmux a` | セッションに再接続 (アタッチ) |
+| `prefix` + `|` | ペインを縦に分割 |
+| `prefix` + `-` | ペインを横に分割 |
+| `prefix` + `Ctrl`+`h`/`j`/`k`/`l` | ペイン間を移動 (Vimキーバインド) |
+| `prefix` + `c` | 新しいウィンドウを作成 |
+| `prefix` + `n` | 次のウィンドウに移動 |
+| `prefix` + `p` | 前のウィンドウに移動 |
+| `prefix` + `&` | 現在のウィンドウを閉じる |
 
 詳細は各README.mdを参照：
 - [Zsh設定詳細](./.zsh/README.md)
