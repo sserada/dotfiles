@@ -16,6 +16,8 @@ local options = {
   clipboard = 'unnamedplus',     -- クリップボードをシステムのクリップボードと共有
 }
 
+-- オプションを適用
 for key, value in pairs(options) do
   vim.opt[key] = value
 end
+
