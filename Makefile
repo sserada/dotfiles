@@ -16,7 +16,7 @@ BACKUP_DIR := $(DOTFILES_DIR)/backup
 HOME_DIR := $(HOME)
 
 # リンク対象のファイル/ディレクトリ
-DOTFILES := .zshrc .zsh .commit_template
+DOTFILES := .zshrc .zsh .commit_template tmux.conf
 CONFIG_DIRS := nvim
 
 help: ## ヘルプを表示
@@ -31,7 +31,7 @@ help: ## ヘルプを表示
 	@echo "  make status       # リンク状態を確認"
 	@echo "  make uninstall    # 全てをアンインストール"
 
-install: backup install-links install-git ## 全てをインストール（バックアップ→リンク作成→Git設定）
+install: backup install-links install-git install-tmux ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー）
 	@echo "$(GREEN)✓ インストール完了！$(NC)"
 	@echo "$(YELLOW)次のステップ:$(NC)"
 	@echo "  1. ターミナルを再起動してください"
@@ -160,6 +160,16 @@ install-git: ## Git設定を適用
 		echo "  $(GREEN)✓ メールアドレス:$(NC) $$current_email （既に設定済み）"; \
 	fi
 	@echo "$(GREEN)✓ Git設定完了$(NC)"
+
+install-tmux: ## tmuxプラグインマネージャー(tpm)をインストール
+	@if [ ! -d "$(HOME_DIR)/.tmux/plugins/tpm" ]; then \
+		echo "$(BLUE)tmuxプラグインマネージャー(tpm)をインストール中...$(NC)"; \
+		git clone https://github.com/tmux-plugins/tpm "$(HOME_DIR)/.tmux/plugins/tpm"; \
+	else \
+		echo "$(YELLOW)スキップ:$(NC) tpmは既にインストール済みです"; \
+	fi
+	@echo "$(GREEN)✓ tpmのインストール完了$(NC)"
+
 
 uninstall: ## シンボリックリンクを削除
 	@echo "$(BLUE)シンボリックリンクを削除中...$(NC)"
