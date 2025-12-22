@@ -186,9 +186,9 @@ nvim
 | `make install-tmux`  | tmuxプラグインマネージャー(tpm)をインストール                                |
 | `make uninstall`     | シンボリックリンクを削除                                                     |
 | `make restore`       | バックアップから復元                                                         |
-| `make clean` | バックアップディレクトリを削除 |
-| `make format` | コードをフォーマット |
-| `make check-format` | コードのフォーマットをチェック |
+| `make clean`         | バックアップディレクトリを削除                                               |
+| `make format`        | コードをフォーマット                                                         |
+| `make check-format`  | コードのフォーマットをチェック                                               |
 
 ## ディレクトリ構造
 
