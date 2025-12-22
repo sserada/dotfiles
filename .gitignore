@@ -1,0 +1,18 @@
+# Backup directory
+backup/
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Zsh
+.zcompdump*
+
+# Neovim
+*.log
