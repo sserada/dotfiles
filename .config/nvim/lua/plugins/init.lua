@@ -15,7 +15,7 @@ for dir_name, entry_type in vim.fs.dir(base_plugins_dir) do
   -- エントリがディレクトリである場合のみ処理
   if entry_type == "directory" then
     local dir_full_path = base_plugins_dir .. "/" .. dir_name
-    
+
     -- サブディレクトリ内の各エントリをループ
     for file_name_with_ext, file_entry_type in vim.fs.dir(dir_full_path) do
       -- エントリがファイルであり、かつ .lua 拡張子を持つ場合のみ処理
@@ -24,11 +24,11 @@ for dir_name, entry_type in vim.fs.dir(base_plugins_dir) do
         -- Luaの 'require' が認識できるモジュールパスを構築
         -- 例: "plugins.completion.autopairs"
         local module_path = table.concat({ plugins_module_path, dir_name, file_name }, ".")
-        
+
         -- pcall を使用してプラグイン設定ファイルを安全に読み込み
         -- エラーが発生しても全体が停止しないようにする
         local ok, spec = pcall(require, module_path)
-        
+
         -- 読み込みが成功し、返された値がテーブル（プラグインスペック）である場合のみ追加
         if ok and type(spec) == "table" then
           table.insert(specs, spec)
