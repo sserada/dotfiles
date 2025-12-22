@@ -33,7 +33,7 @@
 - **詳細**: [.config/nvim/lua/plugins/README.md](./.config/nvim/lua/plugins/README.md)
 
 ### Git
-- **設定ファイル**: [.gitconfig](./.gitconfig)
+- **設定テンプレート**: [.gitconfig.template](./.gitconfig.template)
 - **エディタ**: Neovim
 - **コミットテンプレート**: [.commit_template](./.commit_template)
 - **主な設定**:
@@ -42,6 +42,7 @@
   - pull時のrebase設定
   - 見やすいdiff設定
   - Git LFS対応
+- **注意**: `.gitconfig`はテンプレートから生成されます（追跡されません）
 
 ## インストール
 
@@ -175,7 +176,8 @@ dotfiles/
 │   ├── chrome.zsh         # Chrome関連
 │   └── path.zsh           # PATH設定
 ├── .zshrc                 # Zshエントリーポイント
-├── .gitconfig             # Git設定
+├── .gitconfig.template    # Git設定テンプレート
+├── .gitconfig             # Git設定（生成されるファイル、追跡されない）
 ├── .commit_template       # Gitコミットテンプレート
 ├── .gitignore             # Git無視ファイル
 ├── Makefile               # インストール/管理スクリプト
@@ -216,7 +218,12 @@ nvim ~/.config/nvim/lua/plugins/<category>/<plugin>.lua
 
 ### Git
 
-Git設定をカスタマイズ：
+テンプレートをカスタマイズ（dotfiles管理）：
+```bash
+nvim ~/dotfiles/.gitconfig.template
+```
+
+ローカルのGit設定を直接編集（追跡されない）：
 ```bash
 nvim ~/.gitconfig
 ```
@@ -231,6 +238,8 @@ nvim ~/.commit_template
 - `git co` - checkout
 - `git lg` - 見やすいログ表示
 - `git lga` - 全ブランチのグラフ表示
+
+**注意**: `.gitconfig`はテンプレートから生成されます。個人的な設定（名前、メール等）は`.gitconfig`に保存され、Gitで追跡されません。
 
 ## トラブルシューティング
 

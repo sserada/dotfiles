@@ -1,6 +1,9 @@
 # Backup directory
 backup/
 
+# Local Git configuration (generated from .gitconfig.template)
+.gitconfig
+
 # macOS
 .DS_Store
 

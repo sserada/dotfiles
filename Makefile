@@ -16,7 +16,7 @@ BACKUP_DIR := $(DOTFILES_DIR)/backup
 HOME_DIR := $(HOME)
 
 # リンク対象のファイル/ディレクトリ
-DOTFILES := .zshrc .zsh .commit_template .gitconfig
+DOTFILES := .zshrc .zsh .commit_template
 CONFIG_DIRS := nvim
 
 help: ## ヘルプを表示
@@ -115,6 +115,15 @@ install-links: ## シンボリックリンクを作成
 
 install-git: ## Git設定を適用
 	@echo "$(BLUE)Git設定を適用中...$(NC)"
+	@# .gitconfigがなければテンプレートからコピー
+	@if [ ! -f "$(HOME_DIR)/.gitconfig" ]; then \
+		echo "$(YELLOW).gitconfigが存在しません。テンプレートからコピーします...$(NC)"; \
+		cp "$(DOTFILES_DIR)/.gitconfig.template" "$(HOME_DIR)/.gitconfig"; \
+		echo "  $(GREEN)✓ .gitconfigを作成:$(NC) ~/.gitconfig"; \
+	else \
+		echo "  $(GREEN)✓ .gitconfig:$(NC) 既に存在します"; \
+	fi
+	@echo ""
 	@git config --global core.editor "nvim"
 	@git config --global commit.template "$${HOME}/.commit_template"
 	@echo "  $(GREEN)✓ エディタ:$(NC) nvim"

@@ -18,7 +18,7 @@
 	autocrlf = false
 
 [commit]
-	template = /Users/sou/.commit_template
+	template = ~/.commit_template
 	# コミット時にGPG署名（必要に応じてコメント解除）
 	# gpgsign = true
 
