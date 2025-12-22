@@ -33,8 +33,15 @@
 - **詳細**: [.config/nvim/lua/plugins/README.md](./.config/nvim/lua/plugins/README.md)
 
 ### Git
-- エディタ: Neovim
-- コミットテンプレート: [.commit_template](./.commit_template)
+- **設定ファイル**: [.gitconfig](./.gitconfig)
+- **エディタ**: Neovim
+- **コミットテンプレート**: [.commit_template](./.commit_template)
+- **主な設定**:
+  - カラー表示有効化
+  - 便利なエイリアス（st, co, lg等）
+  - pull時のrebase設定
+  - 見やすいdiff設定
+  - Git LFS対応
 
 ## インストール
 
@@ -102,7 +109,22 @@ exec zsh
 - zinitがプラグインを自動インストール
 - Powerlevel10k設定ウィザードが表示される
 
-### 5. Neovimのセットアップ
+### 5. Git設定
+
+`make install`を実行した場合は自動的に対話形式で設定されます。
+
+手動で設定する場合：
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+または：
+```bash
+make install-git  # 対話的にユーザー名とメールアドレスを設定
+```
+
+### 6. Neovimのセットアップ
 
 ```bash
 nvim
@@ -153,6 +175,7 @@ dotfiles/
 │   ├── chrome.zsh         # Chrome関連
 │   └── path.zsh           # PATH設定
 ├── .zshrc                 # Zshエントリーポイント
+├── .gitconfig             # Git設定
 ├── .commit_template       # Gitコミットテンプレート
 ├── .gitignore             # Git無視ファイル
 ├── Makefile               # インストール/管理スクリプト
@@ -193,10 +216,21 @@ nvim ~/.config/nvim/lua/plugins/<category>/<plugin>.lua
 
 ### Git
 
+Git設定をカスタマイズ：
+```bash
+nvim ~/.gitconfig
+```
+
 コミットテンプレートをカスタマイズ：
 ```bash
 nvim ~/.commit_template
 ```
+
+便利なGitエイリアス（設定済み）：
+- `git st` - status
+- `git co` - checkout
+- `git lg` - 見やすいログ表示
+- `git lga` - 全ブランチのグラフ表示
 
 ## トラブルシューティング
 

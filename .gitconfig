@@ -1,0 +1,98 @@
+# Git Configuration
+# このファイルは~/dotfilesで管理されています
+
+[user]
+	# 初回セットアップ時に以下を実行してください：
+	# git config --global user.name "Your Name"
+	# git config --global user.email "your.email@example.com"
+	#
+	# または `make install-git` を実行すると対話的に設定できます
+
+[core]
+	editor = nvim
+	# ページャー設定（diffやlogで使用）
+	pager = less -FRX
+	# ファイルモードの変更を無視（chmod）
+	filemode = false
+	# 改行コードの自動変換を無効化
+	autocrlf = false
+
+[commit]
+	template = /Users/sou/.commit_template
+	# コミット時にGPG署名（必要に応じてコメント解除）
+	# gpgsign = true
+
+[color]
+	# カラー表示を有効化
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+	# よく使うコマンドのエイリアス
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	# 見やすいログ表示
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# すべてのブランチのログをグラフ表示
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# 変更されたファイル一覧
+	changed = diff --name-only
+	# 差分を単語単位で表示
+	wdiff = diff --word-diff
+
+[diff]
+	# より見やすい差分表示
+	algorithm = histogram
+	# 移動検出
+	renames = copies
+
+[merge]
+	# コンフリクトマーカーに共通の祖先を表示
+	conflictstyle = diff3
+	# デフォルトのマージツール（必要に応じて設定）
+	# tool = vimdiff
+
+[pull]
+	# プル時のデフォルト動作（rebase推奨）
+	rebase = false
+
+[push]
+	# push時のデフォルト動作
+	default = simple
+	# タグを自動的にpush
+	followTags = true
+
+[fetch]
+	# fetch時に削除されたリモートブランチを自動削除
+	prune = true
+
+[init]
+	# デフォルトブランチ名
+	defaultBranch = main
+
+[filter "lfs"]
+	# Git LFS設定
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[url "git@github.com:"]
+	# HTTPSの代わりにSSHを使用（必要に応じてコメント解除）
+	# insteadOf = https://github.com/
+
+# プラットフォーム固有の設定
+# macOS
+[credential]
+	# macOSのキーチェーンを使用
+	helper = osxkeychain
+
+# Linux（必要に応じてコメント解除）
+# [credential]
+# 	helper = cache --timeout=3600

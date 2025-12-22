@@ -16,7 +16,7 @@ BACKUP_DIR := $(DOTFILES_DIR)/backup
 HOME_DIR := $(HOME)
 
 # リンク対象のファイル/ディレクトリ
-DOTFILES := .zshrc .zsh .commit_template
+DOTFILES := .zshrc .zsh .commit_template .gitconfig
 CONFIG_DIRS := nvim
 
 help: ## ヘルプを表示
@@ -116,9 +116,40 @@ install-links: ## シンボリックリンクを作成
 install-git: ## Git設定を適用
 	@echo "$(BLUE)Git設定を適用中...$(NC)"
 	@git config --global core.editor "nvim"
-	@git config --global commit.template "$(DOTFILES_DIR)/.commit_template"
+	@git config --global commit.template "$${HOME}/.commit_template"
 	@echo "  $(GREEN)✓ エディタ:$(NC) nvim"
-	@echo "  $(GREEN)✓ コミットテンプレート:$(NC) .commit_template"
+	@echo "  $(GREEN)✓ コミットテンプレート:$(NC) ~/.commit_template"
+	@echo ""
+	@# ユーザー名の設定確認
+	@current_name=$$(git config --global user.name 2>/dev/null || echo ""); \
+	if [ -z "$$current_name" ]; then \
+		echo "$(YELLOW)Git user.name が設定されていません$(NC)"; \
+		printf "$(BLUE)ユーザー名を入力してください:$(NC) "; \
+		read user_name; \
+		if [ -n "$$user_name" ]; then \
+			git config --global user.name "$$user_name"; \
+			echo "  $(GREEN)✓ ユーザー名:$(NC) $$user_name"; \
+		else \
+			echo "  $(YELLOW)スキップ:$(NC) ユーザー名"; \
+		fi; \
+	else \
+		echo "  $(GREEN)✓ ユーザー名:$(NC) $$current_name （既に設定済み）"; \
+	fi
+	@# メールアドレスの設定確認
+	@current_email=$$(git config --global user.email 2>/dev/null || echo ""); \
+	if [ -z "$$current_email" ]; then \
+		echo "$(YELLOW)Git user.email が設定されていません$(NC)"; \
+		printf "$(BLUE)メールアドレスを入力してください:$(NC) "; \
+		read user_email; \
+		if [ -n "$$user_email" ]; then \
+			git config --global user.email "$$user_email"; \
+			echo "  $(GREEN)✓ メールアドレス:$(NC) $$user_email"; \
+		else \
+			echo "  $(YELLOW)スキップ:$(NC) メールアドレス"; \
+		fi; \
+	else \
+		echo "  $(GREEN)✓ メールアドレス:$(NC) $$current_email （既に設定済み）"; \
+	fi
 	@echo "$(GREEN)✓ Git設定完了$(NC)"
 
 uninstall: ## シンボリックリンクを削除
