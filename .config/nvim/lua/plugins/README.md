@@ -12,7 +12,6 @@ GitHub Copilotプラグイン。コード補完機能を提供。
 *   `cmd = "Copilot"`: `:Copilot` コマンドによる手動有効化。
 *   `event = InsertEnter`: 挿入モード移行時に有効化。
 
----
 ## gitsigns.lua
 
 Gitによる変更行の隣に、追加・変更・削除の記号を表示。
@@ -28,7 +27,7 @@ Gitによる変更行の隣に、追加・変更・削除の記号を表示。
 | `<leader>hu` | Normal | ステージした変更の取り消し。 |
 | `<leader>hb` | Normal | 現在行のGit blame情報を表示。 |
 
----
+
 ## gruvbox.lua
 
 `gruvbox-flat` カラースキームの適用。
@@ -39,7 +38,6 @@ Gitによる変更行の隣に、追加・変更・削除の記号を表示。
 *   `enabled = true`: カラースキームの有効化。
 *   `vim.cmd([[colorscheme gruvbox-flat]])`: Neovimカラースキームを`gruvbox-flat`に設定。
 
----
 ## mason.lua
 
 LSPサーバー、フォーマッター、リンター等、外部ツールの管理。
@@ -67,7 +65,6 @@ LSPサーバー、フォーマッター、リンター等、外部ツールの�
 *   `pylint` (Python)
 *   `eslint_d`
 
----
 ## neogit.lua
 
 EmacsのMagit風UIによるGit操作。
@@ -76,7 +73,6 @@ EmacsのMagit風UIによるGit操作。
 
 *   `:Neogit`: Neogitの起動。
 
----
 ## nvim-cmp.lua
 
 コード補完プラグイン。
@@ -98,12 +94,10 @@ EmacsのMagit風UIによるGit操作。
 *   コマンドライン履歴
 *   Git
 
----
 ## presence.lua
 
 Discord Rich Presence連携。編集中のファイル情報を表示。
 
----
 ## telescope.lua
 
 ファイル、バッファ等を対象としたファジー検索プラグイン。
