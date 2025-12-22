@@ -7,6 +7,7 @@
 ## 含まれる設定
 
 ### Zsh
+
 - **プラグインマネージャー**: [zinit](https://github.com/zdharma-continuum/zinit)
 - **テーマ**: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - **プラグイン**:
@@ -17,6 +18,7 @@
 - **詳細**: [.zsh/README.md](./.zsh/README.md)
 
 ### Neovim
+
 - **プラグインマネージャー**: [lazy.nvim](https://github.com/folke/lazy.nvim)
 - **主要プラグイン**:
   - neo-tree.nvim - ファイルエクスプローラー
@@ -33,6 +35,7 @@
 - **詳細**: [.config/nvim/lua/plugins/README.md](./.config/nvim/lua/plugins/README.md)
 
 ### Git
+
 - **設定テンプレート**: [.gitconfig.template](./.gitconfig.template)
 - **エディタ**: Neovim
 - **コミットテンプレート**: [.commit_template](./.commit_template)
@@ -45,6 +48,7 @@
 - **注意**: `.gitconfig`はテンプレートから生成されます（追跡されません）
 
 ### tmux
+
 - **設定ファイル**: [.tmux.conf](./.tmux.conf)
 - **詳細**: [tmux.md](./tmux.md)
 - **主な設定**:
@@ -77,11 +81,13 @@ cd ~/dotfiles
 ### 2. 依存パッケージのインストール
 
 **Homebrew (macOS/Linux):**
+
 ```bash
 make install-deps
 ```
 
 **手動インストール (Linux):**
+
 ```bash
 # Ubuntu/Debian
 sudo apt update
@@ -95,14 +101,28 @@ sudo dnf install -y neovim git fzf bat eza zoxide ripgrep fd-find
 ```
 
 インストールされるパッケージ：
+
 - Neovim
+
 - Git
+
 - fzf（ファジーファインダー）
+
 - bat（シンタックスハイライト付きcat）
+
 - eza（モダンなls）※オプション
+
 - zoxide（スマートなcd）※オプション
+
 - ripgrep（高速なgrep）
+
 - fd（高速なfind）
+
+- prettier（コードフォーマッター）
+
+- shfmt（シェルスクリプトフォーマッター）
+
+- stylua（Luaフォーマッター）
 
 ### 3. dotfilesのインストール
 
@@ -111,6 +131,7 @@ make install
 ```
 
 これにより以下が実行されます：
+
 1. 既存の設定ファイルをバックアップ（`backup/`ディレクトリ）
 2. シンボリックリンクの作成
 3. Git設定の適用
@@ -122,6 +143,7 @@ exec zsh
 ```
 
 初回起動時：
+
 - zinitがプラグインを自動インストール
 - Powerlevel10k設定ウィザードが表示される
 
@@ -130,12 +152,14 @@ exec zsh
 `make install`を実行した場合は自動的に対話形式で設定されます。
 
 手動で設定する場合：
+
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
 または：
+
 ```bash
 make install-git  # 対話的にユーザー名とメールアドレスを設定
 ```
@@ -150,19 +174,21 @@ nvim
 
 ## Makefileコマンド
 
-| コマンド | 説明 |
-|---|---|
-| `make help` | 使用可能なコマンドを表示 |
-| `make status` | 現在のシンボリックリンク状態を確認 |
-| `make install` | 全てをインストール（バックアップ→リンク→Git設定→tmuxプラグインマネージャー） |
-| `make install-deps` | 必要なパッケージをHomebrew経由でインストール |
-| `make backup` | 既存の設定をバックアップ |
-| `make install-links` | シンボリックリンクのみを作成 |
-| `make install-git` | Git設定のみを適用 |
-| `make install-tmux` | tmuxプラグインマネージャー(tpm)をインストール |
-| `make uninstall` | シンボリックリンクを削除 |
-| `make restore` | バックアップから復元 |
+| コマンド             | 説明                                                                         |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `make help`          | 使用可能なコマンドを表示                                                     |
+| `make status`        | 現在のシンボリックリンク状態を確認                                           |
+| `make install`       | 全てをインストール（バックアップ→リンク→Git設定→tmuxプラグインマネージャー） |
+| `make install-deps`  | 必要なパッケージをHomebrew経由でインストール                                 |
+| `make backup`        | 既存の設定をバックアップ                                                     |
+| `make install-links` | シンボリックリンクのみを作成                                                 |
+| `make install-git`   | Git設定のみを適用                                                            |
+| `make install-tmux`  | tmuxプラグインマネージャー(tpm)をインストール                                |
+| `make uninstall`     | シンボリックリンクを削除                                                     |
+| `make restore`       | バックアップから復元                                                         |
 | `make clean` | バックアップディレクトリを削除 |
+| `make format` | コードをフォーマット |
+| `make check-format` | コードのフォーマットをチェック |
 
 ## ディレクトリ構造
 
@@ -208,6 +234,7 @@ dotfiles/
 ### Zsh
 
 エイリアスやオプションを変更：
+
 ```bash
 nvim ~/.zsh/alias.zsh
 nvim ~/.zsh/option.zsh
@@ -229,6 +256,7 @@ fi
 ```
 
 プラグインを追加：
+
 ```bash
 nvim ~/.zsh/zinit.zsh
 # zinit light <plugin-name> を追加
@@ -238,10 +266,12 @@ source ~/.zshrc
 ### Neovim
 
 プラグインを追加：
+
 1. `~/.config/nvim/lua/plugins/<category>/` に新しい`.lua`ファイルを作成
 2. lazy.nvimが自動的に読み込みます
 
 既存プラグインの設定変更：
+
 ```bash
 nvim ~/.config/nvim/lua/plugins/<category>/<plugin>.lua
 ```
@@ -249,21 +279,25 @@ nvim ~/.config/nvim/lua/plugins/<category>/<plugin>.lua
 ### Git
 
 テンプレートをカスタマイズ（dotfiles管理）：
+
 ```bash
 nvim ~/dotfiles/.gitconfig.template
 ```
 
 ローカルのGit設定を直接編集（追跡されない）：
+
 ```bash
 nvim ~/.gitconfig
 ```
 
 コミットテンプレートをカスタマイズ：
+
 ```bash
 nvim ~/.commit_template
 ```
 
 便利なGitエイリアス（設定済み）：
+
 - `git st` - status
 - `git co` - checkout
 - `git lg` - 見やすいログ表示
@@ -286,6 +320,7 @@ nvim ~/dotfiles/.tmux.conf
 ### Zsh
 
 **プラグインがロードされない**
+
 ```bash
 # zinitの再インストール
 rm -rf ~/.local/share/zinit
@@ -293,12 +328,14 @@ exec zsh
 ```
 
 **補完が効かない**
+
 ```bash
 rm -f ~/.zcompdump*
 autoload -Uz compinit && compinit
 ```
 
 **fzfが見つからない**
+
 ```bash
 brew install fzf
 source ~/.zshrc
@@ -307,6 +344,7 @@ source ~/.zshrc
 ### Neovim
 
 **プラグインがインストールされない**
+
 ```bash
 nvim
 # Neovim内で
@@ -314,6 +352,7 @@ nvim
 ```
 
 **LSPが動かない**
+
 ```bash
 nvim
 # Neovim内で
@@ -322,6 +361,7 @@ nvim
 ```
 
 **Treesitterのエラー**
+
 ```bash
 nvim
 # Neovim内で
@@ -331,6 +371,7 @@ nvim
 ### シンボリックリンク
 
 **リンクが正しくない**
+
 ```bash
 make status  # 状態確認
 make uninstall  # 既存リンクを削除
@@ -338,6 +379,7 @@ make install-links  # 再作成
 ```
 
 **元の設定に戻したい**
+
 ```bash
 make restore  # バックアップから復元
 ```
@@ -346,43 +388,44 @@ make restore  # バックアップから復元
 
 ### Zsh
 
-| キー | 機能 |
-|---|---|
-| `Ctrl+R` | fzfでコマンド履歴検索 |
-| `Ctrl+F` | fzfでファイル検索してエディタで開く |
-| `Ctrl+G` | fzfでディレクトリ検索して移動 |
-| `Ctrl+P` / `Ctrl+N` | 履歴を前後検索 |
+| キー                | 機能                                |
+| ------------------- | ----------------------------------- |
+| `Ctrl+R`            | fzfでコマンド履歴検索               |
+| `Ctrl+F`            | fzfでファイル検索してエディタで開く |
+| `Ctrl+G`            | fzfでディレクトリ検索して移動       |
+| `Ctrl+P` / `Ctrl+N` | 履歴を前後検索                      |
 
 ### Neovim
 
-| キー | 機能 |
-|---|---|
-| `<leader>` | スペースキー |
-| `<leader>e` | ファイルツリー表示/非表示 |
-| `<leader>ff` | ファイル検索 |
-| `<leader>fg` | コード内を単語検索 |
-| `<leader>fb` | バッファ検索 |
-| `<leader>xx` | 診断リスト表示 |
-| `gcc` | 行のコメントアウト/アンコメント |
-| `gc` (Visual) | 選択範囲のコメントアウト |
+| キー          | 機能                            |
+| ------------- | ------------------------------- |
+| `<leader>`    | スペースキー                    |
+| `<leader>e`   | ファイルツリー表示/非表示       |
+| `<leader>ff`  | ファイル検索                    |
+| `<leader>fg`  | コード内を単語検索              |
+| `<leader>fb`  | バッファ検索                    |
+| `<leader>xx`  | 診断リスト表示                  |
+| `gcc`         | 行のコメントアウト/アンコメント |
+| `gc` (Visual) | 選択範囲のコメントアウト        |
 
 ### tmux
 
-| キー | 機能 |
-|---|---|
-| `Ctrl + t` | Prefixキー (デフォルトは `Ctrl + b`) |
-| `prefix` + `d` | セッションから離れる (デタッチ) |
-| `tmux ls` | セッション一覧を表示 |
-| `tmux a` | セッションに再接続 (アタッチ) |
-| `prefix` + `|` | ペインを縦に分割 |
-| `prefix` + `-` | ペインを横に分割 |
-| `prefix` + `Ctrl`+`h`/`j`/`k`/`l` | ペイン間を移動 (Vimキーバインド) |
-| `prefix` + `c` | 新しいウィンドウを作成 |
-| `prefix` + `n` | 次のウィンドウに移動 |
-| `prefix` + `p` | 前のウィンドウに移動 |
-| `prefix` + `&` | 現在のウィンドウを閉じる |
+| キー                              | 機能                                 |
+| --------------------------------- | ------------------------------------ | ---------------- |
+| `Ctrl + t`                        | Prefixキー (デフォルトは `Ctrl + b`) |
+| `prefix` + `d`                    | セッションから離れる (デタッチ)      |
+| `tmux ls`                         | セッション一覧を表示                 |
+| `tmux a`                          | セッションに再接続 (アタッチ)        |
+| `prefix` + `                      | `                                    | ペインを縦に分割 |
+| `prefix` + `-`                    | ペインを横に分割                     |
+| `prefix` + `Ctrl`+`h`/`j`/`k`/`l` | ペイン間を移動 (Vimキーバインド)     |
+| `prefix` + `c`                    | 新しいウィンドウを作成               |
+| `prefix` + `n`                    | 次のウィンドウに移動                 |
+| `prefix` + `p`                    | 前のウィンドウに移動                 |
+| `prefix` + `&`                    | 現在のウィンドウを閉じる             |
 
 詳細は各README.mdを参照：
+
 - [Zsh設定詳細](./.zsh/README.md)
 - [Neovim設定詳細](./.config/nvim/lua/plugins/README.md)
 
@@ -395,6 +438,7 @@ make install  # 必要に応じて
 ```
 
 プラグインの更新：
+
 ```bash
 # Zsh
 exec zsh  # zinitが自動更新
