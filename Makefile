@@ -38,17 +38,28 @@ install: backup install-links install-git ## 全てをインストール（バ�
 	@echo "  2. Powerlevel10k設定ウィザードが表示されます"
 	@echo "  3. Neovimを起動してプラグインをインストール: nvim"
 
-install-deps: ## 必要な依存パッケージをインストール（Homebrew使用）
+install-deps: ## 必要な依存パッケージをインストール
 	@echo "$(BLUE)必要なパッケージをインストール中...$(NC)"
-	@if ! command -v brew &> /dev/null; then \
-		echo "$(RED)✗ Homebrewがインストールされていません$(NC)"; \
-		echo "  https://brew.sh/ からインストールしてください"; \
+	@if command -v brew &> /dev/null; then \
+		echo "$(YELLOW)Homebrewを使用してインストール...$(NC)"; \
+		brew install neovim git fzf bat eza zoxide ripgrep fd; \
+	elif command -v apt &> /dev/null; then \
+		echo "$(YELLOW)aptを使用してインストール (Ubuntu/Debian)...$(NC)"; \
+		sudo apt update; \
+		sudo apt install -y neovim git fzf bat ripgrep fd-find; \
+		echo "$(YELLOW)eza, zoxideはHomebrewまたは手動でインストールしてください$(NC)"; \
+	elif command -v pacman &> /dev/null; then \
+		echo "$(YELLOW)pacmanを使用してインストール (Arch Linux)...$(NC)"; \
+		sudo pacman -S --noconfirm neovim git fzf bat eza zoxide ripgrep fd; \
+	elif command -v dnf &> /dev/null; then \
+		echo "$(YELLOW)dnfを使用してインストール (Fedora)...$(NC)"; \
+		sudo dnf install -y neovim git fzf bat eza zoxide ripgrep fd-find; \
+	else \
+		echo "$(RED)✗ サポートされているパッケージマネージャーが見つかりません$(NC)"; \
+		echo "  手動でパッケージをインストールしてください:"; \
+		echo "  - neovim, git, fzf, bat, eza, zoxide, ripgrep, fd"; \
 		exit 1; \
 	fi
-	@echo "$(YELLOW)基本ツール...$(NC)"
-	@brew install neovim git fzf bat
-	@echo "$(YELLOW)オプションツール（推奨）...$(NC)"
-	@brew install eza zoxide ripgrep fd
 	@echo "$(GREEN)✓ パッケージのインストール完了$(NC)"
 
 backup: ## 既存の設定をバックアップ

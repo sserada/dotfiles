@@ -1,6 +1,8 @@
 # dotfiles
 
-macOS向けの個人用dotfiles設定。Zsh、Neovim、Gitの設定を含みます。
+個人用dotfiles設定。Zsh、Neovim、Gitの設定を含みます。
+
+**対応OS**: macOS / Linux
 
 ## 含まれる設定
 
@@ -38,8 +40,8 @@ macOS向けの個人用dotfiles設定。Zsh、Neovim、Gitの設定を含みま�
 
 ### 必要要件
 
-- macOS
-- [Homebrew](https://brew.sh/)
+- macOS または Linux
+- [Homebrew](https://brew.sh/) (macOS) または パッケージマネージャー (Linux)
 - Git
 
 ### 1. リポジトリのクローン
@@ -51,17 +53,31 @@ cd ~/dotfiles
 
 ### 2. 依存パッケージのインストール
 
+**Homebrew (macOS/Linux):**
 ```bash
 make install-deps
 ```
 
-以下がインストールされます：
+**手動インストール (Linux):**
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install -y neovim git fzf bat ripgrep fd-find
+
+# Arch Linux
+sudo pacman -S neovim git fzf bat eza zoxide ripgrep fd
+
+# Fedora
+sudo dnf install -y neovim git fzf bat eza zoxide ripgrep fd-find
+```
+
+インストールされるパッケージ：
 - Neovim
 - Git
 - fzf（ファジーファインダー）
 - bat（シンタックスハイライト付きcat）
-- eza（モダンなls）
-- zoxide（スマートなcd）
+- eza（モダンなls）※オプション
+- zoxide（スマートなcd）※オプション
 - ripgrep（高速なgrep）
 - fd（高速なfind）
 
@@ -154,6 +170,8 @@ nvim ~/.zsh/alias.zsh
 nvim ~/.zsh/option.zsh
 source ~/.zshrc  # 再読み込み
 ```
+
+**注意 (Linux)**: `.zsh/alias.zsh`にはmacOS専用のアプリ起動エイリアス（`open -a`）が含まれています。Linux環境では該当するエイリアスをコメントアウトまたは削除してください。
 
 プラグインを追加：
 ```bash
