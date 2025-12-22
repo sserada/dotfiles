@@ -11,16 +11,24 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light mollifier/anyframe # interactive filter
-
+# テーマ: Powerlevel10k
 zinit ice depth=1 # for faster loading
-zinit light romkatv/powerlevel10k # zsh theme
+zinit light romkatv/powerlevel10k
 
-zinit ice wait'0'; zinit light zsh-users/zsh-completions # zsh completion
+# 補完機能
+zinit ice wait'0'; zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit # enable completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case insensitive completion
 zstyle ':completion:*:default' menu select=1 # select completion by default
 
-zinit light zsh-users/zsh-autosuggestions # syntax highlight
+# オートサジェスト（入力候補を灰色で表示）
+zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244' # color of suggestion
+
+# シンタックスハイライト（コマンドの色分け表示）
+zinit light zsh-users/zsh-syntax-highlighting
+
+# fzf（ファジーファインダー）
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
 
