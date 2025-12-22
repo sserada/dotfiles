@@ -37,4 +37,5 @@ CLAUDE.md
 .claude/stats-cache.json
 .claude/statsig/
 .claude/todos/
+.claude/commands/
 

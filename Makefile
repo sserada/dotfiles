@@ -1,4 +1,4 @@
-.PHONY: help install uninstall backup restore clean status install-deps format check-format
+.PHONY: help install uninstall backup restore clean status install-deps install-superclaude format check-format
 
 # デフォルトターゲット
 .DEFAULT_GOAL := help
@@ -45,18 +45,19 @@ help: ## ヘルプを表示
 	@echo "  make status       # リンク状態を確認"
 	@echo "  make uninstall    # 全てをアンインストール"
 
-install: backup install-links install-git install-tmux ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー）
+install: backup install-links install-git install-tmux install-superclaude ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー→SuperClaude）
 	@echo "$(GREEN)✓ インストール完了！$(NC)"
 	@echo "$(YELLOW)次のステップ:$(NC)"
 	@echo "  1. ターミナルを再起動してください"
 	@echo "  2. Powerlevel10k設定ウィザードが表示されます"
 	@echo "  3. Neovimを起動してプラグインをインストール: nvim"
+	@echo "  4. Claude Codeを再起動してSuperClaudeコマンドを使用: claude"
 
 install-deps: ## 必要な依存パッケージをインストール
 	@echo "$(BLUE)必要なパッケージをインストール中...$(NC)"
 	@if command -v brew &> /dev/null; then \
 		echo "$(YELLOW)Homebrewを使用してインストール...$(NC)"; \
-		brew install neovim git fzf bat eza zoxide ripgrep fd prettier shfmt stylua; \
+		brew install neovim git fzf bat eza zoxide ripgrep fd prettier shfmt stylua pipx; \
 	elif command -v apt &> /dev/null; then \
 		echo "$(YELLOW)aptを使用してインストール (Ubuntu/Debian)...$(NC)"; \
 		sudo apt update; \
@@ -183,6 +184,28 @@ install-tmux: ## tmuxプラグインマネージャー(tpm)をインストール
 		echo "$(YELLOW)スキップ:$(NC) tpmは既にインストール済みです"; \
 	fi
 	@echo "$(GREEN)✓ tpmのインストール完了$(NC)"
+
+install-superclaude: ## SuperClaude Frameworkをインストール
+	@echo "$(BLUE)SuperClaude Frameworkをインストール中...$(NC)"
+	@if ! command -v pipx &> /dev/null; then \
+		echo "$(RED)✗ pipxが見つかりません$(NC)"; \
+		echo "  'make install-deps' を先に実行してください"; \
+		exit 1; \
+	fi
+	@if ! pipx list | grep -q superclaude; then \
+		echo "$(YELLOW)SuperClaudeをインストール中...$(NC)"; \
+		pipx install superclaude; \
+	else \
+		echo "$(YELLOW)スキップ:$(NC) SuperClaudeは既にインストール済みです"; \
+	fi
+	@if [ -d "$(HOME_DIR)/.local/bin" ]; then \
+		export PATH="$(HOME_DIR)/.local/bin:$$PATH"; \
+		superclaude install; \
+	else \
+		echo "$(RED)✗ ~/.local/bin が見つかりません$(NC)"; \
+		exit 1; \
+	fi
+	@echo "$(GREEN)✓ SuperClaudeのインストール完了$(NC)"
 
 
 uninstall: ## シンボリックリンクを削除
