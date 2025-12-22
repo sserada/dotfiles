@@ -63,6 +63,26 @@
     - tmux-open - URLを開く
     - tmux-continuum - tmuxセッションの自動保存
 
+### iTerm2
+
+- **設定ディレクトリ**: [.config/iterm2/](./.config/iterm2/)
+- **管理方式**: カスタムフォルダから設定を読み込み
+- **含まれる設定**:
+  - プロファイル設定（カラースキーム、フォントなど）
+  - キーバインド
+  - ホットキー設定
+- **注意**: iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込まれます
+
+### EditorConfig
+
+- **設定ファイル**: [.editorconfig](./.editorconfig)
+- **適用範囲**: 全てのエディタで統一されたコーディングスタイル
+- **主な設定**:
+  - UTF-8エンコーディング
+  - LF改行コード
+  - 2スペースインデント（Lua、JavaScript、Shell、YAML、JSONなど）
+  - Makefileのみタブインデント
+
 ## インストール
 
 ### 必要要件
@@ -172,6 +192,18 @@ nvim
 
 初回起動時にlazy.nvimがプラグインを自動インストールします。
 
+### 7. iTerm2の設定（macOSのみ）
+
+iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込まれます。
+
+**初回セットアップ後:**
+
+1. iTerm2を**再起動**してください
+2. 現在の設定が自動的に `~/dotfiles/.config/iterm2/` にエクスポートされます
+3. 以降、設定変更は自動的にこのディレクトリに保存されます
+
+**注意**: iTerm2の設定は既に `make install` で自動的に設定されています。
+
 ## Makefileコマンド
 
 | コマンド             | 説明                                                                         |
@@ -195,19 +227,20 @@ nvim
 ```
 dotfiles/
 ├── .config/
-│   └── nvim/              # Neovim設定
-│       ├── init.lua       # エントリーポイント
-│       └── lua/
-│           ├── config/    # 基本設定
-│           └── plugins/   # プラグイン設定
-│               ├── README.md
-│               ├── completion/  # 補完系
-│               ├── editing/     # 編集系
-│               ├── finder/      # 検索系
-│               ├── git/         # Git系
-│               ├── lsp/         # LSP系
-│               ├── ui/          # UI系
-│               └── integration/ # 統合系
+│   ├── nvim/              # Neovim設定
+│   │   ├── init.lua       # エントリーポイント
+│   │   └── lua/
+│   │       ├── config/    # 基本設定
+│   │       └── plugins/   # プラグイン設定
+│   │           ├── README.md
+│   │           ├── completion/  # 補完系
+│   │           ├── editing/     # 編集系
+│   │           ├── finder/      # 検索系
+│   │           ├── git/         # Git系
+│   │           ├── lsp/         # LSP系
+│   │           ├── ui/          # UI系
+│   │           └── integration/ # 統合系
+│   └── iterm2/            # iTerm2設定（macOS）
 ├── .zsh/                  # Zsh設定
 │   ├── README.md          # Zsh設定の詳細
 │   ├── zinit.zsh          # プラグイン管理
@@ -222,6 +255,7 @@ dotfiles/
 ├── .gitconfig             # Git設定（生成されるファイル、追跡されない）
 ├── .commit_template       # Gitコミットテンプレート
 ├── .gitignore             # Git無視ファイル
+├── .editorconfig          # エディタ共通設定
 ├── Makefile               # インストール/管理スクリプト
 ├── setup.sh               # レガシーセットアップスクリプト
 ├── .tmux.conf             # tmux設定ファイル

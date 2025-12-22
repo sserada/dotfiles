@@ -17,7 +17,7 @@ HOME_DIR := $(HOME)
 
 # リンク対象のファイル/ディレクトリ
 DOTFILES := .zshrc .zsh .commit_template .tmux.conf .claude .editorconfig
-CONFIG_DIRS := nvim
+CONFIG_DIRS := nvim iterm2
 
 format: ## 全てのファイルをフォーマット
 	@echo "$(BLUE)フォーマット中...$(NC)"
