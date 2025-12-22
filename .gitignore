@@ -23,3 +23,18 @@ backup/
 # Claude
 CLAUDE.md
 
+# Claude Code runtime files
+.claude/debug/
+.claude/file-history/
+.claude/history.jsonl
+.claude/ide/
+.claude/plans/
+.claude/plugins/
+.claude/projects/
+.claude/session-env/
+.claude/settings.local.json
+.claude/shell-snapshots/
+.claude/stats-cache.json
+.claude/statsig/
+.claude/todos/
+
