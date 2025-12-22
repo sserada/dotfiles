@@ -100,7 +100,7 @@ EmacsのMagit風UIによるGit操作。
 *   Git
 
 ## presence.lua
-[設定ファイル](./ui/presence.lua)
+[設定ファイル](./integration/presence.lua)
 
 Discord Rich Presence連携。編集中のファイル情報を表示。
 
