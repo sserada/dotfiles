@@ -9,7 +9,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then            -- lazy.nvimが存
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)                                   -- ランタイムパスにlazy.nvimを追加
 
-require("lazy").setup("plugins")                                -- pluginsディレクトリ内のプラグイン設定を読み込む
+-- ランタイムパスにlazy.nvimを追加
+vim.opt.rtp:prepend(lazypath)
+
+-- pluginsディレクトリ内のプラグイン設定を読み込む
+require("lazy").setup("plugins")
 
