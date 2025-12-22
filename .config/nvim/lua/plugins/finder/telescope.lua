@@ -25,6 +25,10 @@ return {
       -- プラグイン全体のデフォルト設定
       defaults = {
         path_display = { "truncate" }, -- パスが長い場合に短縮表示する
+        -- プレビューの設定（Treesitterの互換性問題を回避）
+        preview = {
+          treesitter = false, -- Treesitterによるハイライトを無効化し、従来のsyntaxハイライトを使用
+        },
         -- 検索ウィンドウ内でのキーマップ
         mappings = {
           i = {
