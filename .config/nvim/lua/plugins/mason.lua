@@ -22,7 +22,7 @@ return {
 
     mason_lspconfig.setup({                           -- nvim-lspconfig用のLSPサーバーを自動インストール
       ensure_installed = {
-        "tsserver",                                   -- TypeScript/JavaScript
+        "ts_ls",                                      -- TypeScript/JavaScript
         "html",                                       -- HTML
         "cssls",                                      -- CSS
         "tailwindcss",                                -- Tailwind CSS
@@ -33,6 +33,11 @@ return {
         "prismals",                                   -- Prisma
         "pyright",                                    -- Python
       },
+
+      -- 特定のサーバーを自動インストールの対象から除外
+      automatic_enable = {
+        exclude = { "stylua" }
+      }
     })
 
     mason_tool_installer.setup({                       -- 外部ツール（フォーマッターやリンター）を自動インストール
