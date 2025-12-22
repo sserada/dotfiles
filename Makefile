@@ -22,14 +22,14 @@ CONFIG_DIRS := nvim
 format: ## 全てのファイルをフォーマット
 	@echo "$(BLUE)フォーマット中...$(NC)"
 	@prettier --write . --log-level warn
-	@find . -path './backup' -prune -o \( -name "*.sh" -o -name "*.zsh" \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -w
+	@find . -path './backup' -prune -o \( -type f \( -name "*.sh" -o -name "*.zsh" \) \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -w
 	@stylua .
 	@echo "$(GREEN)✓ フォーマット完了！$(NC)"
 
 check-format: ## ファイルのフォーマットをチェック
 	@echo "$(BLUE)フォーマットをチェック中...$(NC)"
 	@prettier --check .
-	@find . -path './backup' -prune -o \( -name "*.sh" -o -name "*.zsh" \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -d
+	@find . -path './backup' -prune -o \( -type f \( -name "*.sh" -o -name "*.zsh" \) \) -print | grep -v "p10k.zsh" | grep -v "zinit.zsh" | xargs shfmt -d
 	@stylua --check .
 	@echo "$(GREEN)✓ フォーマットは正常です！$(NC)"
 
