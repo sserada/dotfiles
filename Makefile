@@ -1,4 +1,4 @@
-.PHONY: help install uninstall backup restore clean status install-deps install-superclaude install-aicommit2 format check-format
+.PHONY: help install uninstall backup restore clean status install-deps install-superclaude install-aicommit2 install-ollama format check-format
 
 # デフォルトターゲット
 .DEFAULT_GOAL := help
@@ -228,6 +228,32 @@ install-aicommit2: ## aicommit2 (AI commit message generator) をインストー
 	@echo ""
 	@echo "$(YELLOW)設定変更:$(NC) aicommit2 config set <key> <value>"
 	@echo "$(YELLOW)詳細:$(NC) https://github.com/tak-bro/aicommit2"
+
+install-ollama: ## Ollama (ローカルLLM) をインストールして設定
+	@echo "$(BLUE)Ollamaをインストール中...$(NC)"
+	@if command -v ollama &> /dev/null; then \
+		echo "$(YELLOW)スキップ:$(NC) Ollamaは既にインストール済みです"; \
+	else \
+		brew install ollama; \
+	fi
+	@echo "$(BLUE)Ollamaサービスを起動中...$(NC)"
+	@if ! brew services list | grep -q "ollama.*started"; then \
+		brew services start ollama; \
+		sleep 3; \
+	fi
+	@echo "$(BLUE)推奨モデル (qwen2.5-coder:7b) をダウンロード中...$(NC)"
+	@echo "$(YELLOW)注意: 約4.7GBのダウンロードが必要です$(NC)"
+	@ollama pull qwen2.5-coder:7b
+	@if command -v aicommit2 &> /dev/null; then \
+		echo "$(BLUE)aicommit2の設定を更新中...$(NC)"; \
+		aicommit2 config set OLLAMA.model=qwen2.5-coder:7b; \
+		aicommit2 config set OLLAMA.numCtx=4096; \
+		aicommit2 config set locale=ja; \
+		echo "$(GREEN)✓ aicommit2がOllamaを使用するように設定されました$(NC)"; \
+	fi
+	@echo "$(GREEN)✓ Ollamaのインストール完了$(NC)"
+	@echo "$(YELLOW)使い方:$(NC)"
+	@echo "  git add . && aicommit2"
 
 uninstall: ## シンボリックリンクを削除
 	@echo "$(BLUE)シンボリックリンクを削除中...$(NC)"
