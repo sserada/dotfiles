@@ -84,6 +84,6 @@ alias _='sudo'
 
 # OS-specific aliases
 if [[ "$(uname)" == "Darwin" ]]; then
-	# macOS-specific aliases
-	# e.g. alias chrome='open -a "Google Chrome"'
+  # macOS-specific aliases
+  # e.g. alias chrome='open -a "Google Chrome"'
 fi

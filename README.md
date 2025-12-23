@@ -232,23 +232,23 @@ iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込ま�
 
 ## Makefileコマンド
 
-| コマンド                 | 説明                                                                                           |
-| ------------------------ | ---------------------------------------------------------------------------------------------- |
-| `make help`              | 使用可能なコマンドを表示                                                                       |
-| `make status`            | 現在のシンボリックリンク状態を確認                                                             |
-| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2）      |
-| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                                 |
-| `make backup`            | 既存の設定をバックアップ                                                                       |
-| `make install-links`     | シンボリックリンクのみを作成                                                                   |
-| `make install-git`       | Git 設定のみを適用                                                                             |
-| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                                 |
-| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                      |
-| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                       |
-| `make uninstall`         | シンボリックリンクを削除                                                                       |
-| `make restore`           | バックアップから復元                                                                           |
-| `make clean`             | バックアップディレクトリを削除                                                                 |
-| `make format`            | コードをフォーマット                                                                           |
-| `make check-format`      | コードのフォーマットをチェック                                                                 |
+| コマンド                 | 説明                                                                                     |
+| ------------------------ | ---------------------------------------------------------------------------------------- |
+| `make help`              | 使用可能なコマンドを表示                                                                 |
+| `make status`            | 現在のシンボリックリンク状態を確認                                                       |
+| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2） |
+| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                           |
+| `make backup`            | 既存の設定をバックアップ                                                                 |
+| `make install-links`     | シンボリックリンクのみを作成                                                             |
+| `make install-git`       | Git 設定のみを適用                                                                       |
+| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                           |
+| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                |
+| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                 |
+| `make uninstall`         | シンボリックリンクを削除                                                                 |
+| `make restore`           | バックアップから復元                                                                     |
+| `make clean`             | バックアップディレクトリを削除                                                           |
+| `make format`            | コードをフォーマット                                                                     |
+| `make check-format`      | コードのフォーマットをチェック                                                           |
 
 ## ディレクトリ構造
 
@@ -550,46 +550,46 @@ make restore  # バックアップから復元
 
 **基本操作:**
 
-| キー         | 機能                            |
-| ------------ | ------------------------------- |
-| `Ctrl + t`   | Prefixキー                      |
-| `prefix + d` | セッションからデタッチ          |
-| `tmux ls`    | セッション一覧表示              |
-| `tmux a`     | セッションに再接続              |
+| キー         | 機能                   |
+| ------------ | ---------------------- |
+| `Ctrl + t`   | Prefixキー             |
+| `prefix + d` | セッションからデタッチ |
+| `tmux ls`    | セッション一覧表示     |
+| `tmux a`     | セッションに再接続     |
 
 **ペイン操作:**
 
-| キー             | 機能                 |
-| ---------------- | -------------------- |
-| `prefix + v`     | 左右に分割           |
-| `prefix + s`     | 上下に分割           |
-| `prefix + C-h`   | 左のペインに移動     |
-| `prefix + C-j`   | 下のペインに移動     |
-| `prefix + C-k`   | 上のペインに移動     |
-| `prefix + C-l`   | 右のペインに移動     |
+| キー               | 機能               |
+| ------------------ | ------------------ |
+| `prefix + v`       | 左右に分割         |
+| `prefix + s`       | 上下に分割         |
+| `prefix + C-h`     | 左のペインに移動   |
+| `prefix + C-j`     | 下のペインに移動   |
+| `prefix + C-k`     | 上のペインに移動   |
+| `prefix + C-l`     | 右のペインに移動   |
 | `prefix + H/J/K/L` | ペインリサイズ     |
-| `prefix + m`     | ペイン最大化トグル   |
+| `prefix + m`       | ペイン最大化トグル |
 
 **ウィンドウ操作:**
 
-| キー          | 機能               |
-| ------------- | ------------------ |
-| `prefix + c`  | 新規ウィンドウ作成 |
-| `prefix + n`  | 次のウィンドウ     |
-| `prefix + p`  | 前のウィンドウ     |
-| `prefix + Tab`| 最後のウィンドウ   |
-| `prefix + &`  | ウィンドウを閉じる |
+| キー           | 機能               |
+| -------------- | ------------------ |
+| `prefix + c`   | 新規ウィンドウ作成 |
+| `prefix + n`   | 次のウィンドウ     |
+| `prefix + p`   | 前のウィンドウ     |
+| `prefix + Tab` | 最後のウィンドウ   |
+| `prefix + &`   | ウィンドウを閉じる |
 
 **プラグイン機能:**
 
-| キー             | 機能                               |
-| ---------------- | ---------------------------------- |
-| `prefix + C-f`   | tmux-fzf統合UI                     |
-| `prefix + Space` | tmux-thumbsテキスト選択            |
-| `prefix + T`     | セッションウィザード（zoxide統合） |
-| `prefix + Tab`   | extraktoテキスト抽出               |
+| キー             | 機能                                  |
+| ---------------- | ------------------------------------- |
+| `prefix + C-f`   | tmux-fzf統合UI                        |
+| `prefix + Space` | tmux-thumbsテキスト選択               |
+| `prefix + T`     | セッションウィザード（zoxide統合）    |
+| `prefix + Tab`   | extraktoテキスト抽出                  |
 | `prefix + F/W/P` | fzfでセッション/ウィンドウ/ペイン選択 |
-| `prefix + r`     | 設定リロード                       |
+| `prefix + r`     | 設定リロード                          |
 
 **Copy mode（Vi風）:**
 
