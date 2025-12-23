@@ -1,4 +1,4 @@
-.PHONY: help install uninstall backup restore clean status install-deps install-superclaude format check-format
+.PHONY: help install uninstall backup restore clean status install-deps install-superclaude install-aicommit2 format check-format
 
 # デフォルトターゲット
 .DEFAULT_GOAL := help
@@ -45,7 +45,7 @@ help: ## ヘルプを表示
 	@echo "  make status       # リンク状態を確認"
 	@echo "  make uninstall    # 全てをアンインストール"
 
-install: backup install-links install-git install-tmux install-superclaude ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー→SuperClaude）
+install: backup install-links install-git install-tmux install-superclaude install-aicommit2 ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー→SuperClaude→aicommit2）
 	@echo "$(GREEN)✓ インストール完了！$(NC)"
 	@echo "$(YELLOW)次のステップ:$(NC)"
 	@echo "  1. ターミナルを再起動してください"
@@ -57,7 +57,7 @@ install-deps: ## 必要な依存パッケージをインストール
 	@echo "$(BLUE)必要なパッケージをインストール中...$(NC)"
 	@if command -v brew &> /dev/null; then \
 		echo "$(YELLOW)Homebrewを使用してインストール...$(NC)"; \
-		brew install neovim git fzf bat eza zoxide ripgrep fd prettier shfmt stylua pipx; \
+		brew install neovim git fzf bat eza zoxide ripgrep fd prettier shfmt stylua pipx node; \
 	elif command -v apt &> /dev/null; then \
 		echo "$(YELLOW)aptを使用してインストール (Ubuntu/Debian)...$(NC)"; \
 		sudo apt update; \
@@ -207,6 +207,27 @@ install-superclaude: ## SuperClaude Frameworkをインストール
 	fi
 	@echo "$(GREEN)✓ SuperClaudeのインストール完了$(NC)"
 
+install-aicommit2: ## aicommit2 (AI commit message generator) をインストール
+	@echo "$(BLUE)aicommit2をインストール中...$(NC)"
+	@if ! command -v node &> /dev/null; then \
+		echo "$(RED)✗ Node.jsが見つかりません$(NC)"; \
+		echo "  'make install-deps' を先に実行してください"; \
+		exit 1; \
+	fi
+	@if ! command -v npx &> /dev/null; then \
+		echo "$(RED)✗ npxが見つかりません$(NC)"; \
+		exit 1; \
+	fi
+	@echo "$(YELLOW)aicommit2をグローバルインストール中...$(NC)"
+	@npm install -g aicommit2
+	@echo "$(GREEN)✓ aicommit2のインストール完了$(NC)"
+	@echo "$(YELLOW)使い方:$(NC)"
+	@echo "  1. git add で変更をステージング"
+	@echo "  2. aicommit2 を実行"
+	@echo "  3. 初回実行時に使用するAIプロバイダーを選択"
+	@echo ""
+	@echo "$(YELLOW)設定変更:$(NC) aicommit2 config set <key> <value>"
+	@echo "$(YELLOW)詳細:$(NC) https://github.com/tak-bro/aicommit2"
 
 uninstall: ## シンボリックリンクを削除
 	@echo "$(BLUE)シンボリックリンクを削除中...$(NC)"
