@@ -47,6 +47,22 @@
   - Git LFS対応
 - **注意**: `.gitconfig`はテンプレートから生成されます（追跡されません）
 
+### aicommit2
+
+- **ツール**: [aicommit2](https://github.com/tak-bro/aicommit2)
+- **機能**: AI が diff から自動的にコミットメッセージを生成
+- **対応 AI**:
+  - Claude (Anthropic)
+  - ChatGPT (OpenAI)
+  - Gemini (Google)
+  - Ollama (ローカル)
+  - Mistral AI
+- **使い方**:
+  1. 変更をステージング: `git add .`
+  2. AI でコミットメッセージを生成: `aicommit2`
+  3. 初回実行時に使用する AI プロバイダーを選択
+- **設定**: `aicommit2 config set <key> <value>`
+
 ### tmux
 
 - **設定ファイル**: [.tmux.conf](./.tmux.conf)
@@ -144,6 +160,8 @@ sudo dnf install -y neovim git fzf bat eza zoxide ripgrep fd-find
 
 - stylua（Luaフォーマッター）
 
+- Node.js（aicommit2 用）
+
 ### 3. dotfilesのインストール
 
 ```bash
@@ -206,21 +224,23 @@ iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込ま�
 
 ## Makefileコマンド
 
-| コマンド             | 説明                                                                         |
-| -------------------- | ---------------------------------------------------------------------------- |
-| `make help`          | 使用可能なコマンドを表示                                                     |
-| `make status`        | 現在のシンボリックリンク状態を確認                                           |
-| `make install`       | 全てをインストール（バックアップ→リンク→Git設定→tmuxプラグインマネージャー） |
-| `make install-deps`  | 必要なパッケージをHomebrew経由でインストール                                 |
-| `make backup`        | 既存の設定をバックアップ                                                     |
-| `make install-links` | シンボリックリンクのみを作成                                                 |
-| `make install-git`   | Git設定のみを適用                                                            |
-| `make install-tmux`  | tmuxプラグインマネージャー(tpm)をインストール                                |
-| `make uninstall`     | シンボリックリンクを削除                                                     |
-| `make restore`       | バックアップから復元                                                         |
-| `make clean`         | バックアップディレクトリを削除                                               |
-| `make format`        | コードをフォーマット                                                         |
-| `make check-format`  | コードのフォーマットをチェック                                               |
+| コマンド                 | 説明                                                                                           |
+| ------------------------ | ---------------------------------------------------------------------------------------------- |
+| `make help`              | 使用可能なコマンドを表示                                                                       |
+| `make status`            | 現在のシンボリックリンク状態を確認                                                             |
+| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2）      |
+| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                                 |
+| `make backup`            | 既存の設定をバックアップ                                                                       |
+| `make install-links`     | シンボリックリンクのみを作成                                                                   |
+| `make install-git`       | Git 設定のみを適用                                                                             |
+| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                                 |
+| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                      |
+| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                       |
+| `make uninstall`         | シンボリックリンクを削除                                                                       |
+| `make restore`           | バックアップから復元                                                                           |
+| `make clean`             | バックアップディレクトリを削除                                                                 |
+| `make format`            | コードをフォーマット                                                                           |
+| `make check-format`      | コードのフォーマットをチェック                                                                 |
 
 ## ディレクトリ構造
 
@@ -348,6 +368,82 @@ nvim ~/dotfiles/.tmux.conf
 ```
 
 変更を反映するには、tmuxセッション内で`prefix` + `r` (`r`はリロードコマンド) を実行するか、tmuxセッションを再起動してください。
+
+### aicommit2
+
+AI が自動的にコミットメッセージを生成してくれます。
+
+**基本的な使い方:**
+
+```bash
+# 変更をステージング
+git add .
+
+# AIでコミットメッセージを生成してコミット
+aicommit2
+```
+
+**初回セットアップ:**
+
+### オプション 1: Ollama (無料・ローカル実行)
+
+```bash
+# Ollamaをインストールして設定
+make install-ollama
+```
+
+このコマンドで以下が自動的に実行されます：
+
+- Ollama のインストール
+- qwen2.5-coder:7b モデルのダウンロード (約 4.7GB)
+- aicommit2 の設定
+
+### オプション 2: Claude API (有料・高品質)
+
+```bash
+aicommit2 config set ANTHROPIC.key=your-api-key
+aicommit2 config set ANTHROPIC.model=claude-3-5-sonnet-20241022
+```
+
+### オプション 3: その他の AI プロバイダー
+
+```bash
+# OpenAI (ChatGPT)
+aicommit2 config set OPENAI.key=your-api-key
+
+# Google Gemini
+aicommit2 config set GEMINI.key=your-api-key
+```
+
+**その他の設定:**
+
+```bash
+# 使用可能な設定を確認
+aicommit2 config list
+
+# 言語を日本語に設定 (既にOllamaインストール時に設定済み)
+aicommit2 config set locale=ja
+
+# Conventional Commits形式を使用
+aicommit2 config set type=conventional
+
+# Ollamaで別のモデルを使用
+aicommit2 config set OLLAMA.model=codellama:7b
+
+# Claude APIで別のモデルを使用
+aicommit2 config set ANTHROPIC.model=claude-3-5-sonnet-20241022
+```
+
+**対応 AI プロバイダー:**
+
+- **Ollama** - ローカル LLM（無料・推奨）
+- **Anthropic** - Claude（有料・高品質）
+- **OpenAI** - ChatGPT（有料）
+- **Gemini** - Google Gemini（有料）
+- **Mistral** - Mistral AI（有料）
+- **その他** - Cohere, Groq, Perplexity, DeepSeek など
+
+詳細: [aicommit2 GitHub](https://github.com/tak-bro/aicommit2)
 
 ## トラブルシューティング
 
