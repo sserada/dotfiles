@@ -67,17 +67,25 @@
 
 - **設定ファイル**: [.tmux.conf](./.tmux.conf)
 - **詳細**: [tmux.md](./tmux.md)
-- **主な設定**:
-  - プラグインマネージャー: tpm (tmux plugin manager)
-  - Prefixキーを`C-a`に変更
-  - 分割ペインの移動、リサイズ、作成、削除のキーバインド
-  - プラグイン:
-    - tmux-resurrect - tmuxセッションの保存と復元
-    - tmux-sensible - tmuxの基本的な設定
-    - tmux-yank - クリップボード連携
-    - tmux-copycat - 検索機能
-    - tmux-open - URLを開く
-    - tmux-continuum - tmuxセッションの自動保存
+- **Prefixキー**: `Ctrl + t`（デフォルトの`Ctrl + b`から変更）
+- **主要プラグイン**:
+  - tpm - tmuxプラグインマネージャー
+  - tmux-sensible - 常識的なデフォルト設定
+  - tmux-resurrect / tmux-continuum - セッションの保存と復元
+  - tmux-yank - OSクリップボード連携
+  - tmux-open - URLやファイルパスを開く
+  - tmux-fzf - 統合fzf管理UI
+  - tmux-thumbs - 高速テキスト選択
+  - tmux-session-wizard - zoxide統合セッション管理
+  - extrakto - ターミナル出力からテキスト抽出
+  - tmux-gruvbox - Gruvboxテーマ
+  - tmux-cpu - CPU使用率表示
+  - tmux-battery - バッテリー残量表示
+- **最適化設定**:
+  - escape-time 0 - Vim/Neovimのモード切替遅延を解消
+  - history-limit 50000 - スクロールバックを大幅に増加
+  - Vi copy-mode - Viスタイルのキーバインド
+  - 番号付けを1から開始（キーボード操作が容易）
 
 ### iTerm2
 
@@ -540,24 +548,62 @@ make restore  # バックアップから復元
 
 ### tmux
 
-| キー                              | 機能                                 |
-| --------------------------------- | ------------------------------------ | ---------------- |
-| `Ctrl + t`                        | Prefixキー (デフォルトは `Ctrl + b`) |
-| `prefix` + `d`                    | セッションから離れる (デタッチ)      |
-| `tmux ls`                         | セッション一覧を表示                 |
-| `tmux a`                          | セッションに再接続 (アタッチ)        |
-| `prefix` + `                      | `                                    | ペインを縦に分割 |
-| `prefix` + `-`                    | ペインを横に分割                     |
-| `prefix` + `Ctrl`+`h`/`j`/`k`/`l` | ペイン間を移動 (Vimキーバインド)     |
-| `prefix` + `c`                    | 新しいウィンドウを作成               |
-| `prefix` + `n`                    | 次のウィンドウに移動                 |
-| `prefix` + `p`                    | 前のウィンドウに移動                 |
-| `prefix` + `&`                    | 現在のウィンドウを閉じる             |
+**基本操作:**
+
+| キー         | 機能                            |
+| ------------ | ------------------------------- |
+| `Ctrl + t`   | Prefixキー                      |
+| `prefix + d` | セッションからデタッチ          |
+| `tmux ls`    | セッション一覧表示              |
+| `tmux a`     | セッションに再接続              |
+
+**ペイン操作:**
+
+| キー             | 機能                 |
+| ---------------- | -------------------- |
+| `prefix + v`     | 左右に分割           |
+| `prefix + s`     | 上下に分割           |
+| `prefix + C-h`   | 左のペインに移動     |
+| `prefix + C-j`   | 下のペインに移動     |
+| `prefix + C-k`   | 上のペインに移動     |
+| `prefix + C-l`   | 右のペインに移動     |
+| `prefix + H/J/K/L` | ペインリサイズ     |
+| `prefix + m`     | ペイン最大化トグル   |
+
+**ウィンドウ操作:**
+
+| キー          | 機能               |
+| ------------- | ------------------ |
+| `prefix + c`  | 新規ウィンドウ作成 |
+| `prefix + n`  | 次のウィンドウ     |
+| `prefix + p`  | 前のウィンドウ     |
+| `prefix + Tab`| 最後のウィンドウ   |
+| `prefix + &`  | ウィンドウを閉じる |
+
+**プラグイン機能:**
+
+| キー             | 機能                               |
+| ---------------- | ---------------------------------- |
+| `prefix + C-f`   | tmux-fzf統合UI                     |
+| `prefix + Space` | tmux-thumbsテキスト選択            |
+| `prefix + T`     | セッションウィザード（zoxide統合） |
+| `prefix + Tab`   | extraktoテキスト抽出               |
+| `prefix + F/W/P` | fzfでセッション/ウィンドウ/ペイン選択 |
+| `prefix + r`     | 設定リロード                       |
+
+**Copy mode（Vi風）:**
+
+| キー     | 機能                 |
+| -------- | -------------------- |
+| `Escape` | Copy modeに入る      |
+| `v`      | 選択開始             |
+| `y`      | コピーしてモード終了 |
 
 詳細は各README.mdを参照：
 
 - [Zsh設定詳細](./.zsh/README.md)
 - [Neovim設定詳細](./.config/nvim/lua/plugins/README.md)
+- [tmux設定詳細](./tmux.md)
 
 ## 更新
 
