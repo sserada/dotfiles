@@ -71,6 +71,9 @@ alias gppm="g++ -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -
 alias py='python'
 alias py3='python3'
 
+# uv
+alias ur="uv run"
+
 # npm
 alias n='npm'
 alias ni='npm install'
@@ -86,4 +89,5 @@ alias _='sudo'
 if [[ "$(uname)" == "Darwin" ]]; then
   # macOS-specific aliases
   # e.g. alias chrome='open -a "Google Chrome"'
+  alias chrome='open -a "Google Chrome"'
 fi
