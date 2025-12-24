@@ -246,24 +246,24 @@ iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込ま�
 
 ## Makefileコマンド
 
-| コマンド                 | 説明                                                                                              |
-| ------------------------ | ------------------------------------------------------------------------------------------------- |
-| `make help`              | 使用可能なコマンドを表示                                                                          |
-| `make status`            | 現在のシンボリックリンク状態を確認                                                                |
-| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2→uv）      |
-| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                                    |
-| `make backup`            | 既存の設定をバックアップ                                                                          |
-| `make install-links`     | シンボリックリンクのみを作成                                                                      |
-| `make install-git`       | Git 設定のみを適用                                                                                |
-| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                                    |
-| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                         |
-| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                          |
-| `make install-uv`        | uv (Python パッケージマネージャー)をインストール                                                  |
-| `make uninstall`         | シンボリックリンクを削除                                                                          |
-| `make restore`           | バックアップから復元                                                                              |
-| `make clean`             | バックアップディレクトリを削除                                                                    |
-| `make format`            | コードをフォーマット                                                                              |
-| `make check-format`      | コードのフォーマットをチェック                                                                    |
+| コマンド                 | 説明                                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `make help`              | 使用可能なコマンドを表示                                                                    |
+| `make status`            | 現在のシンボリックリンク状態を確認                                                          |
+| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2→uv） |
+| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                              |
+| `make backup`            | 既存の設定をバックアップ                                                                    |
+| `make install-links`     | シンボリックリンクのみを作成                                                                |
+| `make install-git`       | Git 設定のみを適用                                                                          |
+| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                              |
+| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                   |
+| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                    |
+| `make install-uv`        | uv (Python パッケージマネージャー)をインストール                                            |
+| `make uninstall`         | シンボリックリンクを削除                                                                    |
+| `make restore`           | バックアップから復元                                                                        |
+| `make clean`             | バックアップディレクトリを削除                                                              |
+| `make format`            | コードをフォーマット                                                                        |
+| `make check-format`      | コードのフォーマットをチェック                                                              |
 
 ## ディレクトリ構造
 
