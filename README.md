@@ -63,6 +63,20 @@
   3. 初回実行時に使用する AI プロバイダーを選択
 - **設定**: `aicommit2 config set <key> <value>`
 
+### uv
+
+- **ツール**: [uv](https://docs.astral.sh/uv/)
+- **機能**: 超高速な Python パッケージマネージャー・プロジェクト管理ツール
+- **特徴**:
+  - pip の 10〜100 倍高速
+  - プロジェクト管理・仮想環境管理
+  - Python バージョン管理
+- **使い方**:
+  - `uv init my-project` - 新規プロジェクト作成
+  - `uv venv` - 仮想環境作成
+  - `uv pip install <package>` - パッケージインストール
+- **詳細**: README の uv セクションを参照
+
 ### tmux
 
 - **設定ファイル**: [.tmux.conf](./.tmux.conf)
@@ -232,23 +246,24 @@ iTerm2の設定は `~/dotfiles/.config/iterm2/` から自動的に読み込ま�
 
 ## Makefileコマンド
 
-| コマンド                 | 説明                                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------------- |
-| `make help`              | 使用可能なコマンドを表示                                                                 |
-| `make status`            | 現在のシンボリックリンク状態を確認                                                       |
-| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2） |
-| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                           |
-| `make backup`            | 既存の設定をバックアップ                                                                 |
-| `make install-links`     | シンボリックリンクのみを作成                                                             |
-| `make install-git`       | Git 設定のみを適用                                                                       |
-| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                           |
-| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                |
-| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                 |
-| `make uninstall`         | シンボリックリンクを削除                                                                 |
-| `make restore`           | バックアップから復元                                                                     |
-| `make clean`             | バックアップディレクトリを削除                                                           |
-| `make format`            | コードをフォーマット                                                                     |
-| `make check-format`      | コードのフォーマットをチェック                                                           |
+| コマンド                 | 説明                                                                                              |
+| ------------------------ | ------------------------------------------------------------------------------------------------- |
+| `make help`              | 使用可能なコマンドを表示                                                                          |
+| `make status`            | 現在のシンボリックリンク状態を確認                                                                |
+| `make install`           | 全てをインストール（バックアップ→リンク→Git 設定→tmux プラグイン→SuperClaude→aicommit2→uv）      |
+| `make install-deps`      | 必要なパッケージを Homebrew 経由でインストール                                                    |
+| `make backup`            | 既存の設定をバックアップ                                                                          |
+| `make install-links`     | シンボリックリンクのみを作成                                                                      |
+| `make install-git`       | Git 設定のみを適用                                                                                |
+| `make install-tmux`      | tmux プラグインマネージャー(tpm)をインストール                                                    |
+| `make install-aicommit2` | aicommit2 (AI コミットメッセージ生成ツール)をインストール                                         |
+| `make install-ollama`    | Ollama (ローカル LLM)をインストールして aicommit2 を設定                                          |
+| `make install-uv`        | uv (Python パッケージマネージャー)をインストール                                                  |
+| `make uninstall`         | シンボリックリンクを削除                                                                          |
+| `make restore`           | バックアップから復元                                                                              |
+| `make clean`             | バックアップディレクトリを削除                                                                    |
+| `make format`            | コードをフォーマット                                                                              |
+| `make check-format`      | コードのフォーマットをチェック                                                                    |
 
 ## ディレクトリ構造
 
@@ -452,6 +467,73 @@ aicommit2 config set ANTHROPIC.model=claude-3-5-sonnet-20241022
 - **その他** - Cohere, Groq, Perplexity, DeepSeek など
 
 詳細: [aicommit2 GitHub](https://github.com/tak-bro/aicommit2)
+
+### uv
+
+- **ツール**: [uv](https://docs.astral.sh/uv/)
+- **機能**: 超高速な Python パッケージマネージャー・プロジェクト管理ツール
+- **特徴**:
+  - pip や pip-tools の 10〜100 倍高速
+  - プロジェクト管理（`pyproject.toml` ベース）
+  - 仮想環境管理
+  - Python バージョン管理
+  - Rust で実装され、依存関係なし
+
+**基本的な使い方:**
+
+```bash
+# 新しいプロジェクトを作成
+uv init my-project
+cd my-project
+
+# 仮想環境を作成
+uv venv
+
+# 仮想環境を有効化
+source .venv/bin/activate  # macOS/Linux
+
+# パッケージをインストール
+uv pip install requests
+uv pip install -r requirements.txt
+
+# プロジェクトに依存関係を追加
+uv add requests
+uv add --dev pytest
+
+# プロジェクトの依存関係をインストール
+uv sync
+```
+
+**よく使うコマンド:**
+
+```bash
+# パッケージをインストール
+uv pip install <package>
+
+# パッケージをアンインストール
+uv pip uninstall <package>
+
+# 依存関係をロック
+uv pip compile requirements.in -o requirements.txt
+
+# プロジェクト管理
+uv init           # 新規プロジェクト作成
+uv add <package>  # 依存関係追加
+uv sync           # 依存関係を同期
+uv run <command>  # プロジェクト環境でコマンド実行
+```
+
+**インストール:**
+
+```bash
+# 個別にインストール
+make install-uv
+
+# または make install で自動的にインストール
+make install
+```
+
+詳細: [uv Documentation](https://docs.astral.sh/uv/)
 
 ## トラブルシューティング
 

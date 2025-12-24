@@ -1,4 +1,4 @@
-.PHONY: help install uninstall backup restore clean status install-deps install-superclaude install-aicommit2 install-ollama format check-format
+.PHONY: help install uninstall backup restore clean status install-deps install-superclaude install-aicommit2 install-ollama install-uv format check-format
 
 # デフォルトターゲット
 .DEFAULT_GOAL := help
@@ -45,7 +45,7 @@ help: ## ヘルプを表示
 	@echo "  make status       # リンク状態を確認"
 	@echo "  make uninstall    # 全てをアンインストール"
 
-install: backup install-links install-git install-tmux install-superclaude install-aicommit2 ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー→SuperClaude→aicommit2）
+install: backup install-links install-git install-tmux install-superclaude install-aicommit2 install-uv ## 全てをインストール（バックアップ→リンク作成→Git設定→tmuxプラグインマネージャー→SuperClaude→aicommit2→uv）
 	@echo "$(GREEN)✓ インストール完了！$(NC)"
 	@echo "$(YELLOW)次のステップ:$(NC)"
 	@echo "  1. ターミナルを再起動してください"
@@ -219,7 +219,7 @@ install-aicommit2: ## aicommit2 (AI commit message generator) をインストー
 		exit 1; \
 	fi
 	@echo "$(YELLOW)aicommit2をグローバルインストール中...$(NC)"
-	@npm install -g aicommit2
+	@sudo npm install -g aicommit2
 	@echo "$(GREEN)✓ aicommit2のインストール完了$(NC)"
 	@echo "$(YELLOW)使い方:$(NC)"
 	@echo "  1. git add で変更をステージング"
@@ -254,6 +254,25 @@ install-ollama: ## Ollama (ローカルLLM) をインストールして設定
 	@echo "$(GREEN)✓ Ollamaのインストール完了$(NC)"
 	@echo "$(YELLOW)使い方:$(NC)"
 	@echo "  git add . && aicommit2"
+
+install-uv: ## uv (Python パッケージマネージャー) をインストール
+	@echo "$(BLUE)uvをインストール中...$(NC)"
+	@if command -v uv &> /dev/null; then \
+		echo "$(YELLOW)スキップ:$(NC) uvは既にインストール済みです"; \
+		uv --version; \
+	else \
+		echo "$(YELLOW)公式スクリプトからインストール中...$(NC)"; \
+		curl -LsSf https://astral.sh/uv/install.sh | sh; \
+		echo "$(GREEN)✓ uvのインストール完了$(NC)"; \
+		echo ""; \
+		echo "$(YELLOW)注意:$(NC) ターミナルを再起動するか、以下を実行してPATHを更新してください:"; \
+		echo "  source ~/.zshrc"; \
+	fi
+	@echo "$(YELLOW)使い方:$(NC)"
+	@echo "  uv init my-project    # 新しいプロジェクトを作成"
+	@echo "  uv venv               # 仮想環境を作成"
+	@echo "  uv pip install <pkg>  # パッケージをインストール"
+	@echo "$(YELLOW)詳細:$(NC) https://docs.astral.sh/uv/"
 
 uninstall: ## シンボリックリンクを削除
 	@echo "$(BLUE)シンボリックリンクを削除中...$(NC)"
