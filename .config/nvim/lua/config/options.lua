@@ -1,3 +1,7 @@
+-- leaderキーをスペースに設定（プラグインロード前に設定が必要）
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local options = {
   encoding = 'utf-8',            -- エンコーディングをUTF-8に設定
   fileencoding = 'utf-8',        -- ファイルのエンコーディングをUTF-8に設定
